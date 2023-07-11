@@ -24,11 +24,9 @@ export const MInput = ({
     register,
     formState: { errors },
   } = useFormContext();
-
+  console.log(name, errors);
   const inputError = findInputError(errors, name);
   const isInvalid = isFormInvalid(inputError);
-  console.log(name, inputError);
-  console.log(`isInvalid for ${name}:${isInvalid}`);
   return (
     <>
       <div>

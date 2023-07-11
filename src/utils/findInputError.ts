@@ -7,7 +7,6 @@ export function findInputError(errors: FieldErrors<FieldValues>, name: string): 
         return Object.assign(cur, {error: errors[key]})
 
     }, {})
-    console.log('filtered:',name,filtered)
-    console.log('errors:',name,errors)
+
     return filtered
 }

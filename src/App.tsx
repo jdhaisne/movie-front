@@ -1,10 +1,10 @@
 import "./App.css";
-import { MRegister } from "./components/MRegister";
+import { MRegisterForm } from "./components/MRegisterForm";
 
 function App() {
   return (
     <>
-      <MRegister></MRegister>
+      <MRegisterForm></MRegisterForm>
     </>
   );
 }
