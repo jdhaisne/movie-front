@@ -11,7 +11,7 @@ export default function MainRouter() {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/movie/:imdbID" element={<Movie />} />
+        <Route path="/movie/:id" element={<Movie />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

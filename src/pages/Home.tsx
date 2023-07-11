@@ -26,7 +26,7 @@ const Home: React.FC = () => {
     setLoading(true);
 
     fetch(
-      `https://www.omdbapi.com/?s=${searchTerm}&page=1&type=movie&apikey=${apiKey}`
+      `https://www.omdbapi.com/?s=${searchTerm}&type=movie&apikey=${apiKey}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -43,6 +43,12 @@ const Home: React.FC = () => {
               .then((data) => data.Search)
           );
         }
+
+        fetchPromises.push(
+          fetch(`http://localhost:3000/movie/${searchTerm}`)
+            .then((response) => response.json())
+            .then((data) => console.log(data))
+        );
 
         Promise.all(fetchPromises)
           .then((results) => {
@@ -65,6 +71,10 @@ const Home: React.FC = () => {
         setLoading(false);
       });
   };
+
+  useEffect(() => {
+    console.log(searchResults);
+  }, [searchResults]);
 
   return (
     <div>
