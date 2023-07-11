@@ -22,54 +22,49 @@ const Home: React.FC = () => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     setLoading(true);
 
-    fetch(
-      `https://www.omdbapi.com/?s=${searchTerm}&type=movie&apikey=${apiKey}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setTotalResults(parseInt(data.totalResults));
-        const numRequests = Math.ceil(parseInt(data.totalResults) / 10);
-        const fetchPromises = [];
+    try {
+      const searchResponse = await fetch(
+        `https://www.omdbapi.com/?s=${searchTerm}&type=movie&apikey=${apiKey}`
+      );
+      const searchData = await searchResponse.json();
+      setTotalResults(parseInt(searchData.totalResults));
 
-        for (let page = 1; page <= numRequests; page++) {
-          fetchPromises.push(
-            fetch(
-              `https://www.omdbapi.com/?s=${searchTerm}&page=${page}&type=movie&apikey=${apiKey}`
-            )
-              .then((response) => response.json())
-              .then((data) => data.Search)
-          );
-        }
+      const numRequests = Math.ceil(parseInt(searchData.totalResults) / 10);
+      const fetchPromises = [];
 
+      for (let page = 1; page <= numRequests; page++) {
         fetchPromises.push(
-          fetch(`http://localhost:3000/movie/${searchTerm}`)
+          fetch(
+            `https://www.omdbapi.com/?s=${searchTerm}&page=${page}&type=movie&apikey=${apiKey}`
+          )
             .then((response) => response.json())
-            .then((data) => console.log(data))
+            .then((data) => data.Search)
         );
+      }
 
-        Promise.all(fetchPromises)
-          .then((results) => {
-            const allResults = results.flat();
-            setSearchResults(allResults);
-            return allResults;
-          })
-          .then((data) => {
-            setSearchResults(data.filter((data) => data !== undefined));
-          })
-          .catch((error) => {
-            console.error(error);
-          })
-          .finally(() => {
-            setLoading(false);
-          });
-      })
-      .catch((error) => {
-        console.error(error);
-        setLoading(false);
-      });
+      const localResponse = await fetch(
+        `http://localhost:3000/movie/${searchTerm}`
+      );
+      const localData = await localResponse.json();
+      const results = await Promise.all(fetchPromises);
+      const allResults = results
+        .flat()
+        .filter((item) => item !== null && item !== undefined);
+
+      const mergedResults = [...allResults, ...[localData]];
+      const filterMerge = mergedResults.filter(
+        (item) => item !== null && item !== undefined
+      );
+      setSearchResults(filterMerge);
+      console.log(mergedResults);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
