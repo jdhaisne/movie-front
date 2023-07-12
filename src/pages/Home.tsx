@@ -87,10 +87,10 @@ const Home: React.FC = () => {
         {searchResults.map((elem, index) => {
           return (
             <div className="movies" key={index}>
-              <div className="movies-info">
+              {/* <div className="movies-info">
                 <h2 className="movies-title">{elem.Title}</h2>
                 <p className="movies-year">Sortie :{elem.Year}</p>
-              </div>
+              </div> */}
               <Link to={`/movie/${elem.imdbID}`}>
                 <img
                   src={elem.Poster}
