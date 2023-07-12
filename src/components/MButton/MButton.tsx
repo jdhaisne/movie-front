@@ -6,7 +6,7 @@ export const MButton = ({
   className,
 }: {
   children?: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   className?: string;
 }) => {
   return (
