@@ -1,5 +1,5 @@
 import "./App.css";
-import { MRegisterForm } from "./components/MRegisterForm";
+import { MRegisterForm } from "./components/MRegister/MRegisterForm";
 
 function App() {
   return (

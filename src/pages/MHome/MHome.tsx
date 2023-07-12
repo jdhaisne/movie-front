@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Home.css";
+import "./MHome.css";
 
 interface SearchResult {
   Title: string;
@@ -10,7 +10,7 @@ interface SearchResult {
   Poster: string;
 }
 
-const Home: React.FC = () => {
+const MHome: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
@@ -111,4 +111,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default MHome;

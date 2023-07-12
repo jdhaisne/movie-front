@@ -1,17 +1,19 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../pages/Home";
+import MHome from "../pages/MHome/MHome";
 import App from "../App";
 import NotFound from "../pages/NotFound";
-import Movie from "../pages/Movie";
+import MMovie from "../pages/MMovie/MMovie";
+import { MRegister } from "../pages/MRegister/MRegister";
 
 export default function MainRouter() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/movie/:id" element={<Movie />} />
+        <Route path="/home" element={<MHome />} />
+        <Route path="/movie/:id" element={<MMovie />} />
+        <Route path="/register" element={<MRegister />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

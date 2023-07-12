@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 
-import { findInputError } from "../utils/findInputError";
-import { isFormInvalid } from "../utils/isFormValid";
+import { findInputError } from "../../utils/findInputError";
+import { isFormInvalid } from "../../utils/isFormValid";
 
 export const MInput = ({
   label,

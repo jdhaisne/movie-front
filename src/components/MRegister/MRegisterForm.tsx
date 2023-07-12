@@ -1,11 +1,11 @@
-import { mailValidation } from "../validation/mailValidation";
-import { nameValidation } from "../validation/nameValidation";
-import { passwordValidation } from "../validation/passwordValidation";
-import { dobValidation } from "../validation/dobValidation";
-import { MButton } from "./MButton";
-import { MInput } from "./MInput";
+import { mailValidation } from "../../validation/mailValidation";
+import { nameValidation } from "../../validation/nameValidation";
+import { passwordValidation } from "../../validation/passwordValidation";
+import { dobValidation } from "../../validation/dobValidation";
+import { MButton } from "../MButton/MButton";
+import { MInput } from "../Minput/MInput";
 import { useForm, FormProvider, SubmitHandler } from "react-hook-form";
-import { Mselect } from "./MSelect";
+import { Mselect } from "../MSelect/MSelect";
 
 type Inputs = {
   firstName: string;
