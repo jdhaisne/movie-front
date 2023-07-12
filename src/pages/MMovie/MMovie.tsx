@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "./Movie.css";
+import "./MMovie.css";
 
 interface Ratings {
   Source: string;
@@ -26,7 +26,7 @@ interface MovieInfo {
   ImdbID: string;
 }
 
-const Movie = () => {
+const MMovie = () => {
   const { id } = useParams();
   const apiKey = "e8d2b17f";
   const [movieResult, setMovieResult] = useState<MovieInfo | null>(null);
@@ -105,4 +105,4 @@ const Movie = () => {
   );
 };
 
-export default Movie;
+export default MMovie;
