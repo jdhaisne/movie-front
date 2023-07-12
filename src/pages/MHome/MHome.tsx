@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./MHome.css";
 
 interface SearchResult {
@@ -15,6 +15,7 @@ const MHome: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [totalResults, setTotalResults] = useState<number>(0);
+  const navigate = useNavigate();
 
   const apiKey = "e8d2b17f";
 
@@ -60,6 +61,9 @@ const MHome: React.FC = () => {
       );
       setSearchResults(filterMerge);
       console.log(mergedResults);
+
+      if (filterMerge.length > 0)
+        navigate("/movies", { state: { searchResults: filterMerge } }); // Pass searchResults to the /movies route
     } catch (error) {
       console.error(error);
     } finally {
@@ -82,26 +86,6 @@ const MHome: React.FC = () => {
       <button onClick={handleSearch} disabled={loading}>
         {loading ? "Chargement..." : "Rechercher"}
       </button>
-      <div className="totalresults">{totalResults} films ont été trouvés !</div>
-      <div className="movies-container">
-        {searchResults.map((elem, index) => {
-          return (
-            <div className="movies" key={index}>
-              <div className="movies-info">
-                <h2 className="movies-title">{elem.Title}</h2>
-                <p className="movies-year">Sortie :{elem.Year}</p>
-              </div>
-              <Link to={`/movie/${elem.imdbID}`}>
-                <img
-                  src={elem.Poster}
-                  alt={elem.Poster}
-                  className={`image-${index}`}
-                />
-              </Link>
-            </div>
-          );
-        })}
-      </div>
     </div>
   );
 };
