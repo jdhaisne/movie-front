@@ -1,10 +1,11 @@
 import "./App.css";
-import { MRegisterForm } from "./components/MRegister/MRegisterForm";
+import { MHeader } from "./components/MHeader/MHeader";
 
 function App() {
   return (
     <>
-      <MRegisterForm></MRegisterForm>
+      <MHeader></MHeader>
+      movie
     </>
   );
 }
