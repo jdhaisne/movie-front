@@ -3,7 +3,9 @@ import { useFormContext } from "react-hook-form";
 import { findInputError } from "../../utils/findInputError";
 import { isFormInvalid } from "../../utils/isFormValid";
 
+import "./Minput.scss";
 export const MInput = ({
+  className,
   label,
   id,
   type,
@@ -12,6 +14,7 @@ export const MInput = ({
   validation,
   name,
 }: {
+  className?: string;
   label: string;
   id: string;
   type: string;
@@ -24,7 +27,6 @@ export const MInput = ({
     register,
     formState: { errors },
   } = useFormContext();
-  console.log(name, errors);
   const inputError = findInputError(errors, name);
   const isInvalid = isFormInvalid(inputError);
   return (
@@ -33,7 +35,9 @@ export const MInput = ({
         {" "}
         {hasLabel ? (
           <div>
-            <label htmlFor={id}>{label}</label>
+            <label className="input__label" htmlFor={id}>
+              {label}
+            </label>
           </div>
         ) : (
           <></>
@@ -45,6 +49,7 @@ export const MInput = ({
           />
         )}
         <input
+          className={"input " + className}
           id={id}
           type={type}
           placeholder={placeholder}
@@ -56,5 +61,5 @@ export const MInput = ({
 };
 
 const InputError = ({ message }: { message: string }) => {
-  return <p>error:{message}</p>;
+  return <p className="input__error">error:{message}</p>;
 };
