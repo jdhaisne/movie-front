@@ -7,7 +7,7 @@ import { MInput } from "../Minput/MInput";
 import { SubmitHandler } from "react-hook-form";
 
 import "./MRegister.scss";
-import { MForm } from "../../MForm/MForm";
+import { MForm } from "../MForm/MForm";
 
 type Inputs = {
   firstName: string;
