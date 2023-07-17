@@ -20,7 +20,7 @@ export const MInput = ({
   type: string;
   placeholder: string;
   hasLabel?: boolean;
-  validation: any;
+  validation?: any;
   name: string;
 }) => {
   const {

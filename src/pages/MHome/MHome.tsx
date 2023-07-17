@@ -86,29 +86,6 @@ const MHome: React.FC = () => {
       <button onClick={handleSearch} disabled={loading}>
         {loading ? "Chargement..." : "Rechercher"}
       </button>
-<<<<<<< HEAD
-=======
-      <div className="totalresults">{totalResults} films ont été trouvés !</div>
-      <div className="movies-container">
-        {searchResults.map((elem, index) => {
-          return (
-            <div className="movies" key={index}>
-              {/* <div className="movies-info">
-                <h2 className="movies-title">{elem.Title}</h2>
-                <p className="movies-year">Sortie :{elem.Year}</p>
-              </div> */}
-              <Link to={`/movie/${elem.imdbID}`}>
-                <img
-                  src={elem.Poster}
-                  alt={elem.Poster}
-                  className={`image-${index}`}
-                />
-              </Link>
-            </div>
-          );
-        })}
-      </div>
->>>>>>> 14c5cf7a3e2b0b05c078f0433404156180f609cb
     </div>
   );
 };
