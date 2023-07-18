@@ -1,5 +1,3 @@
-import { mailValidation } from "../../validation/mailValidation";
-import { passwordValidation } from "../../validation/passwordValidation";
 import { MButton } from "../MButton/MButton";
 import { MInput } from "../Minput/MInput";
 import { SubmitHandler } from "react-hook-form";
