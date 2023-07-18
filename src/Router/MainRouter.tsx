@@ -11,6 +11,7 @@ import Comments from "../pages/MMovie/NavMovie/Comments";
 import MMovies from "../pages/MMovies/MMovies";
 import { MRegister } from "../pages/MRegister/MRegister";
 import { MHeader } from "../components/MHeader/MHeader";
+import { MLogin } from "../pages/Login/MLogin";
 
 export default function MainRouter() {
   return (
@@ -30,6 +31,15 @@ export default function MainRouter() {
             <>
               <MHeader></MHeader>
               <MRegister />
+            </>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <>
+              <MHeader></MHeader>
+              <MLogin />
             </>
           }
         />
