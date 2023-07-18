@@ -9,6 +9,11 @@ interface Ratings {
   Source: string;
   Value: string;
 }
+export interface DataApi {
+  Title: string;
+  Subject: string;
+  Type: string;
+}
 
 interface MovieInfo {
   Actors: string;
@@ -44,6 +49,21 @@ const MMovie = () => {
         console.error(error);
       });
   };
+  const [ourData, setOurData] = useState<DataApi[]>([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(api);
+      const data = await response.json();
+        setOurData(data)
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   useEffect(() => {
     getInfosMovie();
@@ -128,8 +148,8 @@ const MMovie = () => {
               </div>
             </div>
             <div className="div-post">
-              <MMovieForm></MMovieForm>
-              <MTopic callApi={api}></MTopic>
+              <MMovieForm fetchData ={fetchData}></MMovieForm>
+              <MTopic ourData ={ourData}></MTopic>
             </div>
           </div>
         </>

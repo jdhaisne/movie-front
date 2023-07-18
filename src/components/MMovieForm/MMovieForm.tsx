@@ -14,10 +14,15 @@ const defaultValues: Inputs = {
   commentaire: "",
 };
 
-export const MMovieForm = () => {
+interface MForm{
+  fetchData: () => Promise<void>
+}
+export const MMovieForm = (props:MForm) => {
+  const {fetchData} = props
 
   const { id } = useParams();
   const {register, watch} = useForm();
+
   const onSubmit: SubmitHandler<Inputs> = async (data1) => {
    const data5 = watch("type")
     const data2 = watch("subject")
@@ -43,6 +48,12 @@ export const MMovieForm = () => {
           "Access-Control-Allow-Origin": "*", // Update this based on your CORS requirements
         },
       });
+
+      console.log(res,'test')
+
+      if (res.ok == true){
+        fetchData()
+      }
     } catch (error) {}
 
     console.log(res);
