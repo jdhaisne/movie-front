@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Outlet, useParams } from "react-router-dom";
 import { MMovieForm } from "../../components/MMovieForm/MMovieForm";
+import { MTopic } from "../../components/MTopic/MTopic";
 import "./MMovie.css";
+
 
 interface Ratings {
   Source: string;
@@ -46,7 +48,7 @@ const MMovie = () => {
   useEffect(() => {
     getInfosMovie();
   }, []);
-
+  const api = `http://localhost:3000/topic/${id}`
   return (
     <div>
       {movieResult ? (
@@ -127,6 +129,7 @@ const MMovie = () => {
             </div>
             <div className="div-post">
               <MMovieForm></MMovieForm>
+              <MTopic callApi={api}></MTopic>
             </div>
           </div>
         </>
