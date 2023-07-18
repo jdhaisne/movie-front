@@ -1,0 +1,46 @@
+.createTopic{
+    border: 1px solid black;
+    width: 60%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.globalCreate{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.moviePost{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.moviePost__text{
+    margin-top: 5px;
+}
+
+.sujet{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.textArea{
+    margin-bottom: 5px;
+    height: 100px;
+}
+
+.type{
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.buttonPost{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: bisque;
+}

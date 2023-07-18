@@ -2,7 +2,8 @@ import { MButton } from "../MButton/MButton";
 import { MInput } from "../Minput/MInput";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { MForm } from "../../MForm/MForm";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import "./MMovieForm.css";
 
 type Inputs = {
   critique: string;
@@ -14,30 +15,29 @@ const defaultValues: Inputs = {
   commentaire: "",
 };
 
-interface MForm{
-  fetchData: () => Promise<void>
+interface MForm {
+  fetchData: () => Promise<void>;
 }
-export const MMovieForm = (props:MForm) => {
-  const {fetchData} = props
+export const MMovieForm = (props: MForm) => {
+  const { fetchData } = props;
 
   const { id } = useParams();
-  const {register, watch} = useForm();
+  const { register, watch } = useForm();
 
   const onSubmit: SubmitHandler<Inputs> = async (data1) => {
-   const data5 = watch("type")
-    const data2 = watch("subject")
+    const data5 = watch("type");
+    const data2 = watch("subject");
     const url = `http://localhost:3000/topic/createTopic/${id}`;
     let res = {};
-    const data3 = `{"subject" :"${data2}"}`
-    const data6 = `{"type" :"${data5}"}`
-    console.log(data6, 'test')
-    const data4 = JSON.parse(data3)
-    const data7 = JSON.parse(data6)
+    const data3 = `{"subject" :"${data2}"}`;
+    const data6 = `{"type" :"${data5}"}`;
+    console.log(data6, "test");
+    const data4 = JSON.parse(data3);
+    const data7 = JSON.parse(data6);
     const data = Object.assign({}, data1, data4, data7);
     const body = await JSON.stringify(data);
     console.log("body", body);
 
-    
     try {
       res = await fetch(url, {
         method: "POST",
@@ -49,45 +49,47 @@ export const MMovieForm = (props:MForm) => {
         },
       });
 
-      console.log(res,'test')
+      console.log(res, "test");
 
-      if (res.ok == true){
-        fetchData()
+      if (res.ok == true) {
+        fetchData();
       }
     } catch (error) {}
 
     console.log(res);
   };
   return (
-    <MForm<Inputs>
-      title="moviePost"
-      className="moviePost"
-      defaultValues={defaultValues}
-      onSubmit={onSubmit}
-    >
-      <MInput
-        className="moviePost__text"
-        label="Titre"
-        id="moviePostTitle"
-        type="text"
-        placeholder="Post"
-        hasLabel={true}
-        name="title"
-      ></MInput>
+    <div className="globalCreate">
+    <div className="createTopic">
+      <MForm<Inputs >
+        title="Crée ton Topic"
+        className="moviePost"
+        defaultValues={defaultValues}
+        onSubmit={onSubmit}
+        
+      >
+        <MInput
+          className="moviePost__text"
+          label="Titre"
+          id="moviePostTitle"
+          type="text"
+          placeholder="Post"
+          hasLabel={true}
+          name="title"
+        ></MInput>
 
-      <label>
-        Sujet
-        <textarea
-        {...register('subject', {})}
-        />
-      </label>
+        <label className="sujet">
+          Sujet
+          <textarea className="textArea"{...register("subject", {})} />
+        </label>
 
-      
-      <label>Please choose a type:</label>
+        <label className="type">De quel type est ton topic ?</label>
 
-      <select  {...register('type', {})} name="type" id="type-select">
+        <select {...register("type", {})} name="type" id="type-select">
           <option value="">-</option>
-          <option value="commedit">commedie</option>
+          <option value="Critique">Critique</option>
+          <option value="Commentaire">Commentaire</option>
+          {/* <option value="commedit">commedie</option>
           <option value="drame">drame</option>
           <option value="commedie dramatique">commedie dramatique</option>
           <option value="thriller">thriller</option>
@@ -104,11 +106,12 @@ export const MMovieForm = (props:MForm) => {
           <option value="commendie romantique">commedie rommantique</option>
           <option value="historique">historique</option>
           <option value="retransmission">retransmission</option>
-          <option value="court metrage">court metrage</option>
+          <option value="court metrage">court metrage</option> */}
+        </select>
 
-      </select>
-
-      <MButton>Créer un post</MButton>
-    </MForm>
+        <MButton className="buttonPost">Créer un post</MButton>
+      </MForm>
+    </div>
+    </div>
   );
 };

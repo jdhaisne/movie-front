@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
 import { DataApi } from "../../pages/MMovie/MMovie";
+import "./MTopic.css";
 
 interface MTopicProps{
   ourData: DataApi[]
@@ -9,15 +9,18 @@ export const MTopic = (props:MTopicProps) => {
  const {ourData} = props
 
   return (
-    <>
+    <div className="topicGlobal">
+      <div className ="topic">
       {ourData.map((elem, index) => (
-        <div key={index}>
-          <h2>{elem.Title}</h2>
+        <div className ="oneTopic" key={index}>
+          <h3>{elem.Title}</h3>
           <p>{elem.Subject}</p>
           <p>{elem.Type}</p>
         </div>
       ))}
-    </>
+      </div>
+      
+    </div>
   );
 };
 

@@ -1,0 +1,17 @@
+.topicGlobal{
+    display: flex;
+    justify-content: center;
+}
+.topic{
+    width: 80%;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.oneTopic{
+    margin-top: 20px;
+    width: 50%;
+    border: 1px solid black;
+}
+
