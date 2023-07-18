@@ -11,6 +11,7 @@ import Comments from "../pages/MMovie/NavMovie/Comments";
 import MMovies from "../pages/MMovies/MMovies";
 import { MRegister } from "../pages/MRegister/MRegister";
 import { MHeader } from "../components/MHeader/MHeader";
+import { post } from "../pages/MPost/post";
 
 export default function MainRouter() {
   return (
@@ -33,6 +34,7 @@ export default function MainRouter() {
             </>
           }
         />
+        {/* <Route path="/post/:id" element={<post />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

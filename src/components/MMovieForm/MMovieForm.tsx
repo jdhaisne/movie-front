@@ -1,7 +1,8 @@
 import { MButton } from "../MButton/MButton";
 import { MInput } from "../Minput/MInput";
-import { SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { MForm } from "../../MForm/MForm";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 
 type Inputs = {
   critique: string;
@@ -14,12 +15,21 @@ const defaultValues: Inputs = {
 };
 
 export const MMovieForm = () => {
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log("register with:", data);
-    const url = `http://localhost:3000/comment/createComment/`;
+
+  const { id } = useParams();
+  const {register, watch} = useForm();
+  const onSubmit: SubmitHandler<Inputs> = async (data1) => {
+
+    const data2 = watch("subject")
+    const url = `http://localhost:3000/topic/createTopic/${id}`;
     let res = {};
+    const data3 = `{"subject" :"${data2}"}`
+    const data4 = JSON.parse(data3)
+    const data = Object.assign({}, data1, data4);
     const body = await JSON.stringify(data);
     console.log("body", body);
+
+    
     try {
       res = await fetch(url, {
         method: "POST",
@@ -43,23 +53,20 @@ export const MMovieForm = () => {
     >
       <MInput
         className="moviePost__text"
-        label="moviePost"
-        id="moviePost"
+        label="Titre"
+        id="moviePostTitle"
         type="text"
         placeholder="Post"
         hasLabel={true}
-        name="moviePost"
+        name="title"
       ></MInput>
 
-      {/* <MInput
-        className="moviePost__text"
-        label="first name"
-        id="moviePost"
-        type="text"
-        placeholder=""
-        hasLabel={true}
-        name="moviePost"
-      ></MInput> */}
+      <label>
+        Sujet
+        <textarea
+        {...register('subject', {})}
+        />
+      </label>
 
       <MButton>Créer un post</MButton>
     </MForm>
