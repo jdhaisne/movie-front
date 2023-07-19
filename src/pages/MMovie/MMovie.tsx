@@ -13,6 +13,7 @@ export interface DataApi {
   Title: string;
   Subject: string;
   Type: string;
+  Id: string;
 }
 
 interface MovieInfo {
