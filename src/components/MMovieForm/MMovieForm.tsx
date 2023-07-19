@@ -1,7 +1,7 @@
 import { MButton } from "../MButton/MButton";
 import { MInput } from "../Minput/MInput";
 import { SubmitHandler } from "react-hook-form";
-import { MForm } from "../../MForm/MForm";
+import { MForm } from "../MForm/MForm";
 
 type Inputs = {
   critique: string;

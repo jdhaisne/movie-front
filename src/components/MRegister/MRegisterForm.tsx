@@ -28,7 +28,7 @@ const defaultValues: Inputs = {
 export const MRegisterForm = () => {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     console.log("register with:", data);
-    const url = `http://localhost:3000/signup`;
+    const url = `http://localhost:3000/user/signup`;
     let res = {};
     const body = await JSON.stringify(data);
     // const body = data;
