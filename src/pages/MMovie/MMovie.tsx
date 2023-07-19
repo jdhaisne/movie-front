@@ -3,6 +3,7 @@ import { NavLink, Outlet, useParams } from "react-router-dom";
 import { MMovieForm } from "../../components/MMovieForm/MMovieForm";
 import { MTopic } from "../../components/MTopic/MTopic";
 import "./MMovie.css";
+import RatingSystem from "../../components/MRating/MRating";
 
 
 interface Ratings {
@@ -170,6 +171,7 @@ const MMovie = () => {
           <div></div>
         </div>
       )}
+      <RatingSystem />
     </div>
   );
 };
