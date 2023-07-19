@@ -9,16 +9,16 @@ interface MTopicProps{
 
 export const MTopic = (props:MTopicProps) => {
  const {ourData} = props
-
+console.log(ourData)
   return (
     <div className="topicGlobal">
       <div className ="topic">
       {ourData.map((elem, index) => (
         <div className ="oneTopic" key={index}>
-          <h3>{elem.Title}</h3>
-          <p>{elem.Subject}</p>
-          <p>{elem.Type}</p>
-          <MComments topicID = {elem.Id}></MComments>
+          <h3>{elem.title}</h3>
+          <p>{elem.subject}</p>
+          <p>{elem.type}</p>
+          <MComments topicID = {elem.id}></MComments>
         </div>
         
       ))}

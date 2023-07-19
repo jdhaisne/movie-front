@@ -10,10 +10,10 @@ interface Ratings {
   Value: string;
 }
 export interface DataApi {
-  Title: string;
-  Subject: string;
-  Type: string;
-  Id: string;
+  title: string;
+  subject: string;
+  type: string;
+  id: string;
 }
 
 interface MovieInfo {
