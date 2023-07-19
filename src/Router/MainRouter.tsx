@@ -12,6 +12,8 @@ import MMovies from "../pages/MMovies/MMovies";
 import { MRegister } from "../pages/MRegister/MRegister";
 import { MHeader } from "../components/MHeader/MHeader";
 import { post } from "../pages/MPost/post";
+import { MLogin } from "../pages/Login/MLogin";
+
 
 export default function MainRouter() {
   return (
@@ -34,7 +36,15 @@ export default function MainRouter() {
             </>
           }
         />
-        {/* <Route path="/post/:id" element={<post />} /> */}
+        <Route
+          path="/login"
+          element={
+            <>
+              <MHeader></MHeader>
+              <MLogin />
+            </>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
