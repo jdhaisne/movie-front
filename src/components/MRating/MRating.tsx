@@ -16,24 +16,24 @@ const RatingSystem = () => {
   const [currentValue, setCurrentValue] = useState(0);
 
   // Effectuez une requête pour récupérer la valeur par défaut à partir de la base de données
-  // useEffect(() => {
-  //   // Exécutez votre requête pour obtenir la valeur par défaut à partir de la base de données
-  //   // Par exemple, utilisez fetch() pour envoyer une requête GET à votre API
-  //   fetch("http://localhost:3000/rating/user/:id'")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       // const defaultValue = data.rating; // Supposons que vous recevez la valeur par défaut dans la réponse
-  //       // setCurrentValue(defaultValue);
-  //     })
-  //     .catch((error) => {
-  //       console.error(
-  //         "Erreur lors de la récupération de la valeur par défaut :",
-  //         error
-  //       );
-  //       // Gérez les erreurs de requête ici
-  //     });
-  // }, []);
+  useEffect(() => {
+    // Exécutez votre requête pour obtenir la valeur par défaut à partir de la base de données
+    // Par exemple, utilisez fetch() pour envoyer une requête GET à votre API
+
+    fetch("http://localhost:3000/rating/movie/" + id + "/" + movieID)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setCurrentValue(data.rating);
+      })
+      .catch((error) => {
+        console.error(
+          "Erreur lors de la récupération de la valeur par défaut :",
+          error
+        );
+        // Gérez les erreurs de requête ici
+      });
+  }, []);
 
   const [overValue, setOverValue] = useState(undefined);
 
