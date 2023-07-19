@@ -1,13 +1,8 @@
 import "./App.css";
-import { MHeader } from "./components/MHeader/MHeader";
+import MHome from "./pages/MHome/MHome";
 
 function App() {
-  return (
-    <>
-      <MHeader></MHeader>
-      movie
-    </>
-  );
+  return <MHome></MHome>;
 }
 
 export default App;

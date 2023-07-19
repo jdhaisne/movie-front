@@ -1,9 +1,9 @@
 import { MButton } from "../MButton/MButton";
 import { MInput } from "../Minput/MInput";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { MForm } from "../../MForm/MForm";
 import { useParams } from "react-router-dom";
 import "./MMovieForm.css";
+import { MForm } from "../MForm/MForm";
 
 type Inputs = {
   critique: string;
