@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
 interface dataCommentaire {
-  Id: string;
-  UserId: string;
-  Message: string;
-  TopicId: string;
+  id: string;
+  userId: string;
+  message: string;
+  topicId: string;
 }
 
 export const MComments = ({ topicID }: { topicID: string }) => {
@@ -28,8 +28,8 @@ export const MComments = ({ topicID }: { topicID: string }) => {
         {data.map((elem: dataCommentaire) => {
           return (
             <div className="commentaires">
-              <span>{elem.Message}</span>
-              <span>{elem.UserId}</span>
+              <span>{elem.message}</span>
+              <span>{elem.userId}</span>
             </div>
           );
         })}
