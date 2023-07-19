@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, Outlet, useParams } from "react-router-dom";
 import { MMovieForm } from "../../components/MMovieForm/MMovieForm";
 import "./MMovie.css";
+import RatingSystem from "../../components/MRating/MRating";
 
 interface Ratings {
   Source: string;
@@ -146,6 +147,7 @@ const MMovie = () => {
           <div></div>
         </div>
       )}
+      <RatingSystem />
     </div>
   );
 };
