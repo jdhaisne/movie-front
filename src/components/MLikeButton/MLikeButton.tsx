@@ -1,4 +1,3 @@
-import { json } from "sequelize";
 import { MButton } from "../MButton/MButton";
 
 export const MLikeButton = ({ movieId }: { movieId: number }) => {
@@ -21,5 +20,5 @@ export const MLikeButton = ({ movieId }: { movieId: number }) => {
       });
     } catch (err) {}
   };
-  return <MButton>like</MButton>;
+  return <MButton onClick={onClick}>like</MButton>;
 };
