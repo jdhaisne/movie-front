@@ -5,10 +5,9 @@ import { MTopic } from "../../components/MTopic/MTopic";
 import "./MMovie.css";
 import RatingSystem from "../../components/MRating/MRating";
 
-
 interface Ratings {
-  Source: string;
-  Value: string;
+  source: string;
+  value: string;
 }
 export interface DataApi {
   title: string;
@@ -18,22 +17,22 @@ export interface DataApi {
 }
 
 interface MovieInfo {
-  Actors: string;
-  BoxOffice: string;
-  Country: string;
-  Director: string;
-  Genre: string;
-  Language: string;
-  Plot: string;
-  Poster: string;
-  Rated: string;
-  Ratings: Ratings[];
-  Released: string;
-  Runtime: string;
-  Title: string;
-  Type: string;
-  Year: string;
-  ImdbID: string;
+  actors: string;
+  boxOffice: string;
+  country: string;
+  director: string;
+  genre: string;
+  language: string;
+  plot: string;
+  poster: string;
+  rated: string;
+  ratings: Ratings[];
+  released: string;
+  runtime: string;
+  title: string;
+  type: string;
+  year: string;
+  imdbID: string;
 }
 
 const MMovie = () => {
@@ -48,16 +47,18 @@ const MMovie = () => {
         setMovieResult(data);
       })
       .catch((error) => {
-        console.error(error);
+        console.error("omdbapi", error);
       });
   };
   const [ourData, setOurData] = useState<DataApi[]>([]);
 
   const fetchData = async () => {
     try {
+      console.log("acant ");
       const response = await fetch(api);
       const data = await response.json();
-        setOurData(data)
+      console.log("apre");
+      setOurData(data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -70,7 +71,7 @@ const MMovie = () => {
   useEffect(() => {
     getInfosMovie();
   }, []);
-  const api = `http://localhost:3000/topic/${id}`
+  const api = `http://localhost:3000/topic/${id}`;
   return (
     <div>
       {movieResult ? (
@@ -150,8 +151,8 @@ const MMovie = () => {
               </div>
             </div>
             <div className="div-post">
-              <MMovieForm fetchData ={fetchData}></MMovieForm>
-              <MTopic ourData ={ourData}></MTopic>
+              <MMovieForm fetchData={fetchData}></MMovieForm>
+              <MTopic ourData={ourData}></MTopic>
             </div>
           </div>
         </>
