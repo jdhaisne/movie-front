@@ -14,19 +14,50 @@ import { MHeader } from "../components/MHeader/MHeader";
 import { post } from "../pages/MPost/post";
 import { MLogin } from "../pages/Login/MLogin";
 
-
 export default function MainRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/home" element={<MHome />} />
-        <Route path="/movie/:id" element={<MMovie />}>
+        <Route
+          path="/"
+          element={
+            <>
+              <MHeader />
+              <App />
+            </>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <>
+              <MHeader />
+              <MHome />
+            </>
+          }
+        />
+        <Route
+          path="/movie/:id"
+          element={
+            <>
+              <MHeader />
+              <MMovie />
+            </>
+          }
+        >
           <Route path="notes" element={<Notes />} />
           <Route path="critiques" element={<Critiques />} />
           <Route path="comments" element={<Comments />} />
         </Route>
-        <Route path="/movies" element={<MMovies />} />
+        <Route
+          path="/movies"
+          element={
+            <>
+              <MHeader />
+              <MMovies />
+            </>
+          }
+        />
         <Route
           path="/register"
           element={
