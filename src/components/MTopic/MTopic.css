@@ -3,22 +3,80 @@
     justify-content: center;
 }
 .topic{
-    width: 80%;
+    width: 100%;
     display: flex; 
     flex-direction: column;
     align-items: center;
 }
 
-.oneTopic{
+.oneTopicCom, .oneTopicCri{
     margin-top: 20px;
     width: 50%;
     border: 1px solid black;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.typeComment{
-    background-color: rgb(69, 104, 221);
+.titleMessagePostCom, .titleMessagePostCri{
+    margin-top: 20px;
+    width: 50%;
+    border: 1px solid black;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.typeCritique{
-    background-color: rgb(169, 54, 54);
+
+
+.oneTopicCom{
+    background-color: rgb(71, 103, 208);
+    color : white;
+   
+}
+
+.oneTopicCri{
+    background-color: rgb(135, 40, 172);
+    color : white;
+}
+
+.titlePost{
+    border: 1px solid black;
+    width: 80%;
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.messagePost{
+    border: 1px solid black;
+    width: 80%;
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+
+}
+
+.commentsCom, .commentsCri{
+    border: 1px solid black;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+}
+
+.commentsCom, .titleMessagePostCom{
+
+    background-color: rgb(168, 177, 208);
+}
+
+.commentsCri, .titleMessagePostCri{
+    background-color: rgb(163, 142, 172);
 }

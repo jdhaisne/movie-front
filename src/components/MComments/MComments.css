@@ -1,17 +1,18 @@
-.allComments{
+/* .allComments{
     border: 1px solid black;
-    width: 80%;
+    width: 100%;
     margin-bottom: 20px;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
 
 .test2{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 80%;
 }
 
 .oneComment{
@@ -21,8 +22,12 @@
     margin-top: 10px;
     display: flex;
     padding: 5px;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
 }
 
 .userName{
     margin-right: 5px;
+    margin-left: 3px;
 }
