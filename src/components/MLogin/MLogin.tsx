@@ -17,7 +17,7 @@ const defaultValues: Inputs = {
 export const MLoginForm = () => {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     console.log("register with:", data);
-    const url = `http://localhost:3000/user/signin`; // route du back
+    const url = `http://localhost:3000/signin`; // route du back
     const body = await JSON.stringify(data);
     let response = undefined;
     try {
