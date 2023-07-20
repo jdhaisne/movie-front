@@ -31,6 +31,7 @@ export const MRegisterForm = () => {
     const url = `http://localhost:3000/user/signup`;
     let res = {};
     const body = await JSON.stringify(data);
+   
     // const body = data;
     console.log("body", body);
     try {
@@ -41,9 +42,12 @@ export const MRegisterForm = () => {
         headers: {
           "Content-Type": "application/json", // Specify the content type as JSON
           "Access-Control-Allow-Origin": "*", // Update this based on your CORS requirements
+          
         },
-      });
-    } catch (error) {}
+      
+      }
+     )
+     console.log('test23')} catch (error) {}
 
     console.log(res);
   };
