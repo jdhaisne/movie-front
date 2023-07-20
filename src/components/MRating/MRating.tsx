@@ -8,18 +8,24 @@ const colors = {
   grey: "#a9a9a9",
 };
 
+const colorsMean = {
+  red: "#ee1010",
+  grey: "#a9a9a9",
+};
+
 const RatingSystem = () => {
   //tableau d'étoiles
   const stars = Array(5).fill(0);
+  const starsMean = Array(5).fill(0);
 
   //useState pour compter les étoiles liquées ou survolées
   const [currentValue, setCurrentValue] = useState(0);
+  const [meanValue, setMeanValue] = useState(0);
 
   // Effectuez une requête pour récupérer la valeur par défaut à partir de la base de données
   useEffect(() => {
-    // Exécutez votre requête pour obtenir la valeur par défaut à partir de la base de données
-    // Par exemple, utilisez fetch() pour envoyer une requête GET à votre API
-
+    console.log("CURRENTVALUE");
+    // Votre code de requête pour récupérer la valeur par défaut (currentValue) ici...
     fetch("http://localhost:3000/rating/movie/" + id + "/" + movieID)
       .then((response) => response.json())
       .then((data) => {
@@ -34,6 +40,27 @@ const RatingSystem = () => {
         // Gérez les erreurs de requête ici
       });
   }, []);
+
+  // Effectuez une requête pour récupérer la moyenne à partir de la base de données
+  useEffect(() => {
+    console.log("MEAN VALUE");
+    // Votre code de requête pour récupérer la moyenne (meanValue) ici...
+    fetch("http://localhost:3000/rating/movie/mean/" + movieID)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("VOICI LES DATA ATTENDUES", data);
+        setMeanValue(data);
+      })
+      .catch((error) => {
+        console.error(
+          "Erreur lors de la récupération de la valeur par défaut :",
+          error
+        );
+        // Gérez les erreurs de requête ici
+      });
+  }, [currentValue]);
+
+  console.log("VOICI LA MEAN APRES USEEFFECT", meanValue);
 
   const [overValue, setOverValue] = useState(undefined);
 
@@ -119,6 +146,17 @@ const RatingSystem = () => {
             onClick={() => handleClick(index + 1)}
             onMouseOver={() => handleMouseOver(index + 1)}
             onMouseLeave={handleMouseLeave}
+          />
+        ))}
+      </div>
+      <h3>Notes Spectateurs : </h3>
+      <div className="container">
+        {starsMean.map((_, index) => (
+          <FaStar
+            key={index}
+            size={24}
+            style={{ marginRight: 10, cursor: "pointer" }}
+            color={meanValue > index ? colorsMean.red : colorsMean.grey}
           />
         ))}
       </div>
