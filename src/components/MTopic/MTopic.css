@@ -15,3 +15,10 @@
     border: 1px solid black;
 }
 
+.typeComment{
+    background-color: rgb(69, 104, 221);
+}
+
+.typeCritique{
+    background-color: rgb(169, 54, 54);
+}

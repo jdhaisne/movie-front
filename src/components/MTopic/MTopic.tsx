@@ -15,9 +15,12 @@ console.log(ourData)
       <div className ="topic">
       {ourData.map((elem, index) => (
         <div className ="oneTopic" key={index}>
+        {elem.type == 'Commentaire'? (
+          <p className='typeComment'>{elem.type}</p>
+          ):(  <p className='typeCritique'>{elem.type}</p>)}
           <h3>{elem.title}</h3>
           <p>{elem.subject}</p>
-          <p>{elem.type}</p>
+          
           <MComments topicID = {elem.id}></MComments>
         </div>
         
