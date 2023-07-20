@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 
-// import Star from "./MStar";
-
 const colors = {
   orange: "#FFBA5A",
   grey: "#a9a9a9",
@@ -24,12 +22,10 @@ const RatingSystem = () => {
 
   // Effectuez une requête pour récupérer la valeur par défaut à partir de la base de données
   useEffect(() => {
-    console.log("CURRENTVALUE");
     // Votre code de requête pour récupérer la valeur par défaut (currentValue) ici...
     fetch("http://localhost:3000/rating/movie/" + id + "/" + movieID)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setCurrentValue(data.rating);
       })
       .catch((error) => {
@@ -43,12 +39,11 @@ const RatingSystem = () => {
 
   // Effectuez une requête pour récupérer la moyenne à partir de la base de données
   useEffect(() => {
-    console.log("MEAN VALUE");
     // Votre code de requête pour récupérer la moyenne (meanValue) ici...
     fetch("http://localhost:3000/rating/movie/mean/" + movieID)
       .then((response) => response.json())
       .then((data) => {
-        console.log("VOICI LES DATA ATTENDUES", data);
+        console.log("GET MOYENNE");
         setMeanValue(data);
       })
       .catch((error) => {
@@ -60,13 +55,12 @@ const RatingSystem = () => {
       });
   }, [currentValue]);
 
-  console.log("VOICI LA MEAN APRES USEEFFECT", meanValue);
-
   const [overValue, setOverValue] = useState(undefined);
 
   //fonction pour cliquer sur l'étoile et colorer le nombre d'étoile correspondant
   const handleClick = (value: number) => {
-    setCurrentValue(value);
+    console.log(value);
+    submitRating(value);
   };
 
   //fonction pour survoler l'étoile et colorer le nombre d'étoile correspondant
@@ -97,38 +91,27 @@ const RatingSystem = () => {
     rating: number;
   }
 
-  console.log(movieID);
-  // create the reservation object to send to the back end
-  const rating: RatingModel = {
-    userId: id !== null && id !== undefined ? id : "", // Effectuer une vérification de type pour éviter les valeurs null ou undefined
-    movieID: movieID !== null && movieID !== undefined ? movieID : "",
-    rating: currentValue,
-  };
+  // post the reservation and retrieve the reservation id in the reservationResponse
+  async function submitRating(value: any) {
+    const rating: RatingModel = {
+      userId: id !== null && id !== undefined ? id : "", // Effectuer une vérification de type pour éviter les valeurs null ou undefined
+      movieID: movieID !== null && movieID !== undefined ? movieID : "",
+      rating: value,
+    };
 
-  // create request options for the reservation request
-  const RatingToPost = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(rating),
-  };
-
-  console.log(RatingToPost);
-  console.log(id);
-
-  if (id !== null) {
-    // post the reservation and retrieve the reservation id in the reservationResponse
-    async function submitRating() {
-      const submitResponse = await fetch(
-        "http://localhost:3000/rating/",
-        RatingToPost
-      );
-      console.log(submitResponse);
-    }
-    useEffect(() => {
-      if (currentValue !== 0) {
-        submitRating();
-      }
-    }, [currentValue]);
+    // create request options for the reservation request
+    const RatingToPost = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(rating),
+    };
+    console.log(RatingToPost);
+    const submitResponse = await fetch(
+      "http://localhost:3000/rating/",
+      RatingToPost
+    );
+    setCurrentValue(value);
+    console.log("SUBMIT RATING");
   }
 
   return (
