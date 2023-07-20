@@ -3,6 +3,7 @@ import { MInput } from "../Minput/MInput";
 import { MForm } from "../MForm/MForm";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { MButton } from "../MButton/MButton";
+import  "./MComments.css"
 
 interface dataCommentaire {
   id: string;
@@ -11,8 +12,8 @@ interface dataCommentaire {
   topicId: string;
 }
 
-interface Inputs{
-  commentaire:string
+interface Inputs {
+  commentaire: string;
 }
 
 const defaultValues: Inputs = {
@@ -35,13 +36,12 @@ export const MComments = ({ topicID }: { topicID: string }) => {
   }, []);
 
   const onSubmit: SubmitHandler<Inputs> = async (data1) => {
-  
     const url = `http://localhost:3000/comment/createComment`;
     let res = {};
 
     const userID = localStorage.getItem("firstName");
-    let idTopic = `{"topicId" : "${topicID}"}`
-    let userId = `{"userId" : "${userID}"}`
+    let idTopic = `{"topicId" : "${topicID}"}`;
+    let userId = `{"userId" : "${userID}"}`;
 
     idTopic = JSON.parse(idTopic);
     userId = JSON.parse(userId);
@@ -49,8 +49,6 @@ export const MComments = ({ topicID }: { topicID: string }) => {
     const data = Object.assign({}, idTopic, userId, data1);
     const body = await JSON.stringify(data);
     console.log("body", body);
-
-
 
     try {
       res = await fetch(url, {
@@ -63,42 +61,43 @@ export const MComments = ({ topicID }: { topicID: string }) => {
         },
       });
 
+      callApi();
     } catch (error) {}
 
     console.log(res);
   };
   return (
-    <div>
+    <div className="test2">
       <>
-      <MForm<Inputs >
-        title=""
-        className="moviePost"
-        defaultValues={defaultValues}
-        onSubmit={onSubmit}
-        
-      >
-        <MInput
-          className="commentPost__text"
-          label="lache ton com"
-          id="commentPost"
-          type="text"
-          placeholder="Commentaire"
-          hasLabel={true}
-          name="message"
-        ></MInput>
+        <MForm<Inputs>
+          title=""
+          className="moviePost"
+          defaultValues={defaultValues}
+          onSubmit={onSubmit}
+        >
+          <MInput
+            className="commentPost__text"
+            label="lache ton com"
+            id="commentPost"
+            type="text"
+            placeholder="Commentaire"
+            hasLabel={true}
+            name="message"
+          ></MInput>
 
-         <MButton className="buttonPost">Envoi ton com</MButton>
-        </MForm> 
-       
-
+          <MButton className="buttonPost">Envoi ton com</MButton>
+        </MForm>
+        <div className="allComments">
         {data.map((elem: dataCommentaire) => {
           return (
-            <div className="commentaires">
-              <span>{elem.message}</span>
-              <span>{elem.userId}</span>
+            <div className="oneComment">
+              <span className="userName">{elem.userId}:</span>
+              <span> {elem.message}</span>
+              
             </div>
           );
         })}
+        </div>
       </>
     </div>
   );
