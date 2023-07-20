@@ -39,7 +39,7 @@ export const MComments = ({ topicID }: { topicID: string }) => {
     const url = `http://localhost:3000/comment/createComment`;
     let res = {};
 
-    const userID = localStorage.getItem("userId");
+    const userID = localStorage.getItem("firstName");
     let idTopic = `{"topicId" : "${topicID}"}`
     let userId = `{"userId" : "${userID}"}`
 
