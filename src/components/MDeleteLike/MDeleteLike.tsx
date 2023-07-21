@@ -1,18 +1,16 @@
 import { MButton } from "../MButton/MButton";
 
-
-export const MLikeButton = ({ movieId }: { movieId: string | number }) => {
-
+export const MDeleteLikeButton = ({ movieId }: { movieId: string }) => {
   const onClick = async () => {
     try {
-      const url = `http://localhost:3000/like`;
+      const url = `http://localhost:3000/like/:id`;
       const body = await JSON.stringify({
         movieId: movieId,
         userId: localStorage.getItem("id"),
       });
       let res = {};
       res = await fetch(url, {
-        method: "post",
+        method: "delete",
         body: body,
         mode: "cors",
         headers: {
@@ -22,7 +20,5 @@ export const MLikeButton = ({ movieId }: { movieId: string | number }) => {
       });
     } catch (err) {}
   };
-
-  return <MButton onClick={onClick}>subscribe</MButton>;
-
+  return <MButton onClick={onClick}>NE PLUS SUIVRE</MButton>;
 };

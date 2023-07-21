@@ -6,6 +6,9 @@ import "./MMovie.css";
 import RatingSystem from "../../components/MRating/MRating";
 import { MLikeButton } from "../../components/MLikeButton/MLikeButton";
 
+import { MDeleteLikeButton } from "../../components/MDeleteLike/MDeleteLike";
+
+
 interface Ratings {
   source: string;
   value: string;
@@ -21,16 +24,16 @@ interface MovieInfo {
   actors: string;
   boxOffice: string;
   country: string;
-  director: string;
+  Director: string;
   genre: string;
   language: string;
   plot: string;
-  poster: string;
+  Poster: string;
   rated: string;
   ratings: Ratings[];
   released: string;
   runtime: string;
-  title: string;
+  Title: string;
   type: string;
   year: string;
   imdbID: string;
@@ -65,6 +68,7 @@ const MMovie = () => {
     }
   };
 
+  console.log(movieResult);
   useEffect(() => {
     fetchData();
   }, []);
@@ -78,8 +82,26 @@ const MMovie = () => {
       {movieResult ? (
         <>
           <div className="main-content">
-            <div className="infos-movie">
-              <div className="div-nav">
+            <nav className="nav-movie">
+              <div className="div-image-movie">
+                <img
+                  src={movieResult.Poster}
+                  alt={movieResult.Poster}
+                  className="SingleMovie-image"
+                />
+                <MLikeButton movieId={movieResult.imdbID} />
+                <MDeleteLikeButton movieId={movieResult.imdbID} />
+              </div>
+              <div className="infos-movie">
+                <h2 className="SingleMovie-title">{movieResult.Title}</h2>
+
+                <p className="singleMovie-director">
+                  Réalisé par {movieResult.Director}
+                </p>
+              </div>
+              <RatingSystem />
+            </nav>
+            {/* <div className="div-nav">
                 <nav>
                   <ul>
                     <li>
@@ -111,49 +133,42 @@ const MMovie = () => {
                 <div className="div-nav-content">
                   <Outlet />
                 </div>
-              </div>
+              </div> */}
 
-              <div className="SingleMovie-container">
-                <div className="SingleMovie">
-                  <div className="SingleMovie-main">
-                    <h2 className="SingleMovie-title">{movieResult.Title}</h2>
-                    <p className="singleMovie-director">
-                      Réalisé par {movieResult.Director}
-                    </p>
-                    <p className="SingleMovie-year">
-                      Sortie : {movieResult.Released}
-                    </p>
-                  </div>
-                  <img
-                    src={movieResult.Poster}
-                    alt={movieResult.Poster}
-                    className="SingleMovie-image"
-                  />
-                  <div className="SingleMovie-infos">
-                    <p className="SingleMovie-plot">{movieResult.Plot}</p>
-                    <p className="SingleMovie-genre">
-                      Genre: {movieResult.Genre}
-                    </p>
-                    <p className="SingleMovie-runtime">
-                      Durée: {movieResult.Runtime}
-                    </p>
-                  </div>
+            {/* <div className="SingleMovie-container">
+              <div className="SingleMovie">
+                <div className="SingleMovie-main">
+            
+                  <p className="SingleMovie-year">
+                    Sortie : {movieResult.Released}
+                  </p>
                 </div>
-                <div className="SingleMovie-ratings">
-                  {movieResult.Ratings.map((elem, index) => {
-                    return (
-                      <div key={index}>
-                        <p>Note: {elem.Value}</p>
-                        <p>Source: {elem.Source}</p>
-                      </div>
-                    );
-                  })}
+
+                <div className="SingleMovie-infos">
+                  <p className="SingleMovie-plot">{movieResult.Plot}</p>
+                  <p className="SingleMovie-genre">
+                    Genre: {movieResult.Genre}
+                  </p>
+                  <p className="SingleMovie-runtime">
+                    Durée: {movieResult.Runtime}
+                  </p>
                 </div>
               </div>
             </div>
             <div>
               <MLikeButton movieId={id}></MLikeButton>
             </div>
+              <div className="SingleMovie-ratings">
+                {movieResult.Ratings.map((elem, index) => {
+                  return (
+                    <div key={index}>
+                      <p>Note: {elem.Value}</p>
+                      <p>Source: {elem.Source}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div> */}
             <div className="div-post">
               <MMovieForm fetchData={fetchData}></MMovieForm>
               <MTopic ourData={ourData}></MTopic>
@@ -176,7 +191,6 @@ const MMovie = () => {
           <div></div>
         </div>
       )}
-      <RatingSystem />
     </div>
   );
 };

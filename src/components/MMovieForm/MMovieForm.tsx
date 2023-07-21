@@ -53,7 +53,9 @@ export const MMovieForm = (props: MForm) => {
       if (res.ok == true) {
         fetchData();
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
 
     console.log(res);
   };
