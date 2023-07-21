@@ -19,3 +19,25 @@
         color: black;
     }
 }
+
+.header-menu {
+    display: none;
+    &--showing {
+        display: block;
+        position: absolute;
+        top: 70px;
+        right: 0px;
+        background-color: red;
+        width: 15%;
+        text-align: left;
+    }
+    &__link {
+        color: black;
+        border: 1px solid;
+        display: block;
+        border-bottom: none;
+        &--last {
+            border-bottom: 1px solid;
+        }
+    }
+}
