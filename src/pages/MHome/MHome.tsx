@@ -55,12 +55,12 @@ const MHome: React.FC = () => {
         .flat()
         .filter((item) => item !== null && item !== undefined);
 
-      const mergedResults = [...allResults, ...[localData]];
+      const mergedResults = [...allResults, ...localData];
       const filterMerge = mergedResults.filter(
         (item) => item !== null && item !== undefined
       );
       setSearchResults(filterMerge);
-      console.log(mergedResults);
+      console.log(filterMerge);
 
       if (filterMerge.length > 0)
         navigate("/movies", { state: { searchResults: filterMerge } }); // Pass searchResults to the /movies route
