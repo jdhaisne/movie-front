@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { TLike, TTopic } from "../../type";
 import { MTopicCard } from "../../components/MTopic/MTopicCard";
+import { MComments } from "../../components/MComments/MComments";
 
 export const MFeed = () => {
   const apiKey = "e8d2b17f";
+  let topicsArray: TTopic[] = [];
   const [topics, setTopics] = useState<any[]>([
     {
       id: "",
@@ -19,7 +21,7 @@ export const MFeed = () => {
 
   useEffect(() => {
     const url = `http://localhost:3000/`;
-    let topicsArray: TTopic[] = [];
+
     let likes: TLike[] = [];
 
     const getLikes = async () => {
@@ -43,25 +45,29 @@ export const MFeed = () => {
         try {
           const res = await fetch(`${url}topic/movie/${like.movieId}`);
           const resTopics: TTopic[] = await res.json();
+          console.log("rest", resTopics, [...resTopics]);
           topicsArray.push(...resTopics);
+          console.log(topicsArray);
+          setTopics(topicsArray);
         } catch (error) {}
       });
     };
     const all = async () => {
       await getLikes();
       await getTopics();
-      console.log("ff", [...topicsArray], typeof [...topicsArray]);
-      setTopics(likes);
+      console.log("ff", topicsArray);
     };
     all();
+    console.log(topicsArray);
+    setTopics(topicsArray);
   }, []);
   console.log("topics", topics);
-  let r;
   return (
     <>
+      <div onClick={() => setTopics(topicsArray)}>set</div>
       <div>
         {topics.map((topic, index) => {
-          return <div>{JSON.stringify(topic)}</div>;
+          return <MTopicCard topic={topic} key={index}></MTopicCard>;
         })}
       </div>
     </>
