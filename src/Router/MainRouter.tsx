@@ -13,7 +13,8 @@ import { MRegister } from "../pages/MRegister/MRegister";
 import { MHeader } from "../components/MHeader/MHeader";
 import { post } from "../pages/MPost/post";
 import { MLogin } from "../pages/Login/MLogin";
-
+import { MUser } from "../pages/MUser/MUser";
+import TopBar from "../components/TopBar/TopBar";
 
 export default function MainRouter() {
   return (
@@ -42,6 +43,15 @@ export default function MainRouter() {
             <>
               <MHeader></MHeader>
               <MLogin />
+            </>
+          }
+        />
+        <Route
+          path="/user/:id"
+          element={
+            <>
+              <MHeader></MHeader>
+              <TopBar></TopBar>
             </>
           }
         />
