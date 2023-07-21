@@ -20,7 +20,7 @@ const defaultValues: Inputs = {
   commentaire: "",
 };
 
-export const MComments = ({ topicID }: { topicID: string }) => {
+export const MComments = ({ topicID, className }: { topicID: string, className: string }) => {
   const [data, setData] = useState<any[]>([]);
   const callApi = async () => {
     try {
@@ -87,7 +87,7 @@ export const MComments = ({ topicID }: { topicID: string }) => {
 
           <MButton className="buttonPost">Envoi ton com</MButton>
         </MForm>
-        <div className="allComments">
+        <div className={className}>
         {data.map((elem: dataCommentaire) => {
           return (
             <div className="oneComment">
