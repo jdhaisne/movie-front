@@ -13,11 +13,9 @@ import { MRegister } from "../pages/MRegister/MRegister";
 import { MHeader } from "../components/MHeader/MHeader";
 import { post } from "../pages/MPost/post";
 import { MLogin } from "../pages/Login/MLogin";
-<<<<<<< HEAD
+
 import { MUser } from "../pages/MUser/MUser";
 import TopBar from "../components/TopBar/TopBar";
-=======
->>>>>>> dev
 
 export default function MainRouter() {
   return (
