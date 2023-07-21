@@ -32,12 +32,11 @@ export const MMovieForm = (props: MForm) => {
     const data3 = `{"subject" :"${data2}"}`;
     const data6 = `{"type" :"${data5}"}`;
     console.log(data6, "test");
+    console.log(data3);
     const data4 = JSON.parse(data3);
     const data7 = JSON.parse(data6);
     const data = Object.assign({}, data1, data4, data7);
     const body = await JSON.stringify(data);
-    console.log("body", body);
-
     try {
       res = await fetch(url, {
         method: "POST",

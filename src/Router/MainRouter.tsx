@@ -13,6 +13,7 @@ import { MRegister } from "../pages/MRegister/MRegister";
 import { MHeader } from "../components/MHeader/MHeader";
 import { post } from "../pages/MPost/post";
 import { MLogin } from "../pages/Login/MLogin";
+import { MFeed } from "../pages/MFeed/MFeed";
 
 export default function MainRouter() {
   return (
@@ -33,6 +34,15 @@ export default function MainRouter() {
             <>
               <MHeader />
               <MHome />
+            </>
+          }
+        />
+        <Route
+          path="/feed"
+          element={
+            <>
+              <MHeader />
+              <MFeed />
             </>
           }
         />

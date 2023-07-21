@@ -5,7 +5,9 @@ import { MTopic } from "../../components/MTopic/MTopic";
 import "./MMovie.css";
 import RatingSystem from "../../components/MRating/MRating";
 import { MLikeButton } from "../../components/MLikeButton/MLikeButton";
+
 import { MDeleteLikeButton } from "../../components/MDeleteLike/MDeleteLike";
+
 
 interface Ratings {
   source: string;
@@ -152,6 +154,10 @@ const MMovie = () => {
                   </p>
                 </div>
               </div>
+            </div>
+            <div>
+              <MLikeButton movieId={id}></MLikeButton>
+            </div>
               <div className="SingleMovie-ratings">
                 {movieResult.Ratings.map((elem, index) => {
                   return (
@@ -163,7 +169,6 @@ const MMovie = () => {
                 })}
               </div>
             </div> */}
-
             <div className="div-post">
               <MMovieForm fetchData={fetchData}></MMovieForm>
               <MTopic ourData={ourData}></MTopic>
