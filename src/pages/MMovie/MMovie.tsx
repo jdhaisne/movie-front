@@ -4,6 +4,7 @@ import { MMovieForm } from "../../components/MMovieForm/MMovieForm";
 import { MTopic } from "../../components/MTopic/MTopic";
 import "./MMovie.css";
 import RatingSystem from "../../components/MRating/MRating";
+import { MLikeButton } from "../../components/MLikeButton/MLikeButton";
 
 interface Ratings {
   source: string;
@@ -149,6 +150,9 @@ const MMovie = () => {
                   })}
                 </div>
               </div>
+            </div>
+            <div>
+              <MLikeButton movieId={id}></MLikeButton>
             </div>
             <div className="div-post">
               <MMovieForm fetchData={fetchData}></MMovieForm>
