@@ -54,42 +54,43 @@ export const MMovieForm = (props: MForm) => {
       if (res.ok == true) {
         fetchData();
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
 
     console.log(res);
   };
   return (
     <div className="globalCreate">
-    <div className="createTopic">
-      <MForm<Inputs >
-        title="Crée ton Topic"
-        className="moviePost"
-        defaultValues={defaultValues}
-        onSubmit={onSubmit}
-        
-      >
-        <MInput
-          className="moviePost__text"
-          label="Titre"
-          id="moviePostTitle"
-          type="text"
-          placeholder="Post"
-          hasLabel={true}
-          name="title"
-        ></MInput>
+      <div className="createTopic">
+        <MForm<Inputs>
+          title="Crée ton Topic"
+          className="moviePost"
+          defaultValues={defaultValues}
+          onSubmit={onSubmit}
+        >
+          <MInput
+            className="moviePost__text"
+            label="Titre"
+            id="moviePostTitle"
+            type="text"
+            placeholder="Post"
+            hasLabel={true}
+            name="title"
+          ></MInput>
 
-        <label className="sujet">
-          Sujet
-          <textarea className="textArea"{...register("subject", {})} />
-        </label>
+          <label className="sujet">
+            Sujet
+            <textarea className="textArea" {...register("subject", {})} />
+          </label>
 
-        <label className="type">De quel type est ton topic ?</label>
+          <label className="type">De quel type est ton topic ?</label>
 
-        <select {...register("type", {})} name="type" id="type-select">
-          <option value="">-</option>
-          <option value="Critique">Critique</option>
-          <option value="Commentaire">Commentaire</option>
-          {/* <option value="commedit">commedie</option>
+          <select {...register("type", {})} name="type" id="type-select">
+            <option value="">-</option>
+            <option value="Critique">Critique</option>
+            <option value="Commentaire">Commentaire</option>
+            {/* <option value="commedit">commedie</option>
           <option value="drame">drame</option>
           <option value="commedie dramatique">commedie dramatique</option>
           <option value="thriller">thriller</option>
@@ -107,11 +108,11 @@ export const MMovieForm = (props: MForm) => {
           <option value="historique">historique</option>
           <option value="retransmission">retransmission</option>
           <option value="court metrage">court metrage</option> */}
-        </select>
+          </select>
 
-        <MButton className="buttonPost">Créer un post</MButton>
-      </MForm>
-    </div>
+          <MButton className="buttonPost">Créer un post</MButton>
+        </MForm>
+      </div>
     </div>
   );
 };
