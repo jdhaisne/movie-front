@@ -19,6 +19,7 @@ const TopBar = () => {
   const apiKey = "e8d2b17f";
   const [userData, setUserData] = useState({});
   const { id } = useParams();
+  const [tableOfLike, setTableOfLike] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3000/user/" + id)
@@ -35,46 +36,79 @@ const TopBar = () => {
   }, [id]); // Ajout de [id] en tant que dépendance pour que le useEffect soit exécuté seulement lorsque id change.
 
   console.log(userData);
+  console.log('test2')
+  // const handleClickSuivi = () => {
+    // console.log('test')
+    // fetch("http://localhost:3000/like/user/" + id)
+    //   .then((response) => response.json())
+    //   .then((dataLikes) => {
+    //     console.log(dataLikes);
+    //     if (dataLikes.length !== 0) {
+    //       for (const elem of dataLikes) {
+    //         fetch(`https://www.omdbapi.com/?i=${elem.movieId}&apikey=${apiKey}`)
+    //           .then((response) => response.json())
+    //           .then((data) => {
+    //             console.log(data);
+    //             setTableOfLike(data);
+    //             console.log(tableOfLike);
+    //           })
+    //           .catch((error) => {
+    //             console.error("omdbapi", error);
+    //           });
 
-  const handleClickSuivi = () => {
-    fetch("http://localhost:3000/like/user/" + id)
-      .then((response) => response.json())
-      .then((dataLikes) => {
-        console.log(dataLikes);
+      //       fetch("http://localhost:3000/movie/" + elem.movieId)
+      //         .then((response) => response.json())
+      //         .then((data) => {
+      //           console.log(data);
+      //           let copy = [...tableOfLike];
+      //           if (data.length > 0) {
+      //             copy.push(data);
+      //           }
+      //           console.log(copy);
+      //           setTableOfLike(copy);
+      //         })
+      //         .catch((error) => {
+      //           console.error("Error occurred while fetching movie:", error);
+      //         });
+      //     }
+      //   }
+      // });
+    const handleClickSuivi = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/like/user/" + id);
+        const dataLikes = await response.json();
+
         if (dataLikes.length !== 0) {
-          for (const elem of dataLikes) {
-            if (typeof elem.id === "string") {
-              fetch(`https://www.omdbapi.com/?i=${elem.id}&apikey=${apiKey}`)
-                .then((response) => response.json())
-                .then((data) => {
-                  console.log(data);
-                })
-                .catch((error) => {
-                  console.error("omdbapi", error);
-                });
-            } else {
-              console.log(elem.id);
-              fetch("http://localhost:3000/movie/" + elem.id)
-                .then((response) => response.json())
-                .then((data) => {
-                  console.log(data);
-                })
-                .catch((error) => {
-                  console.error("Error occurred while fetching movie:", error);
-                });
-            }
-          }
-        }
-      })
-      .catch((error) => {
-        console.error(
-          "Erreur lors de la récupération de la valeur par défaut :",
-          error
-        );
-      });
-  };
+          const apiKey = "e8d2b17f";
+          const moviePromises = dataLikes.map(async (elem) => {
+            const response1 = await fetch(
+              `https://www.omdbapi.com/?i=${elem.movieId}&apikey=${apiKey}`
+            );
+            const data1 = await response1.json();
 
-  handleClickSuivi();
+            const response2 = await fetch(
+              "http://localhost:3000/movie/" + elem.movieId
+            );
+            const data2 = await response2.json();
+
+            return { ...data1, ...data2 };
+          });
+
+          const movies = await Promise.all(moviePromises);
+          setTableOfLike(movies);
+        }
+      } catch (error) {
+        console.error("Error occurred while fetching data:", error);
+      }
+    };
+
+  // };
+  
+  console.log(tableOfLike);
+  useEffect(() => {
+    handleClickSuivi();
+
+  },[])
 
   return (
     <Header
