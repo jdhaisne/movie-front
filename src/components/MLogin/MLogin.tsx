@@ -47,6 +47,7 @@ export const MLoginForm = () => {
           localStorage.setItem("firstName", user.firstName);
           localStorage.setItem("mail", user.mail);
           localStorage.setItem("role", user.role);
+          localStorage.setItem("user", JSON.stringify(user));
 
           // Redirection vers une autre page, par exemple, la page d'accueil
           window.location.href = "/home";
