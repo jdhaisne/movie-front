@@ -115,7 +115,7 @@ const RatingSystem = () => {
   }
 
   return (
-    <div>
+    <div className="div-ratings">
       <h3>Notez le film ! </h3>
       <div className="container">
         {stars.map((_, index) => (

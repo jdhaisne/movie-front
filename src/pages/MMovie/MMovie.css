@@ -1,6 +1,16 @@
-.infos-movie {
+.nav-movie {
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.nav-movie img {
+  object-fit: cover;
+}
+
+.div-image-movie {
+  display: flex;
+  flex-direction: column;
 }
 
 .SingleMovie-container {
