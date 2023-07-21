@@ -38,30 +38,50 @@ export const MFeed = () => {
 
     const getTopics = async () => {
       console.log("t", likes, typeof likes);
-      likes.forEach(async (like: TLike) => {
-        console.log("F", topicsArray, typeof topicsArray);
-        try {
-          const res = await fetch(`${url}topic/movie/${like.movieId}`);
-          const resTopics: TTopic[] = await res.json();
-          topicsArray.push(...resTopics);
-        } catch (error) {}
-      });
+    
+      try {
+        const topicPromises = likes.map(async (like: TLike) => {
+          try {
+            const res = await fetch(`${url}topic/${like.movieId}`);
+            const resTopics: TTopic[] = await res.json();
+            return resTopics;
+          } catch (error) {
+            return [];
+          }
+        });
+    
+        const topicsArrays = await Promise.all(topicPromises);
+        const mergedTopics = topicsArrays.flat();
+        console.log(mergedTopics);
+        return mergedTopics;
+      } catch (error) {
+        return [];
+      }
     };
+    
+
     const all = async () => {
+      // console.log(topicsArray)
       await getLikes();
-      await getTopics();
-      console.log("ff", [...topicsArray], typeof [...topicsArray]);
-      setTopics(likes);
+      const topicsArray = await getTopics();
+      console.log("ff", topicsArray, typeof topicsArray);
+      console.log(topicsArray)
+      setTopics(topicsArray);
+      console.log(topicsArray)
     };
     all();
   }, []);
   console.log("topics", topics);
-  let r;
+
   return (
     <>
       <div>
         {topics.map((topic, index) => {
-          return <div>{JSON.stringify(topic)}</div>;
+          return (
+            <>
+              <MTopicCard topic={topic} key={index}></MTopicCard>
+            </>
+          );
         })}
       </div>
     </>
