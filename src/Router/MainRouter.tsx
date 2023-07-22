@@ -2,20 +2,25 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MHome from "../pages/MHome/MHome";
 import App from "../App";
 import NotFound from "../pages/NotFound";
+
 // Page MMovie
 import MMovie from "../pages/MMovie/MMovie";
 import Notes from "../pages/MMovie/NavMovie/Notes";
 import Critiques from "../pages/MMovie/NavMovie/Critiques";
 import Comments from "../pages/MMovie/NavMovie/Comments";
 //
+
 import MMovies from "../pages/MMovies/MMovies";
 import { MRegister } from "../pages/MRegister/MRegister";
 import { MHeader } from "../components/MHeader/MHeader";
 import { post } from "../pages/MPost/post";
 import { MLogin } from "../pages/Login/MLogin";
 
-import { MUser } from "../pages/MUser/MUser";
+//
 import TopBar from "../components/TopBar/TopBar";
+import Avis from "../components/TopBar/Avis";
+import Suivi from "../components/TopBar/Suivi";
+import CritiquesC from "../components/TopBar/CritiquesC";
 
 export default function MainRouter() {
   return (
@@ -87,7 +92,12 @@ export default function MainRouter() {
               <TopBar></TopBar>
             </>
           }
-        />
+        >
+          <Route path="suivi" element={<Suivi />} />
+          <Route path="avis" element={<Avis />} />
+          <Route path="critiquesC" element={<CritiquesC />} />
+        </Route>
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
