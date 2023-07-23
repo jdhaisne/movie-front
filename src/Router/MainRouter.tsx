@@ -21,6 +21,7 @@ import TopBar from "../components/TopBar/TopBar";
 import Avis from "../components/TopBar/Avis";
 import Suivi from "../components/TopBar/Suivi";
 import CritiquesC from "../components/TopBar/CritiquesC";
+import ContactForm from "../components/TopBar/ContactForm";
 
 export default function MainRouter() {
   return (
@@ -88,7 +89,6 @@ export default function MainRouter() {
           path="/user/:id"
           element={
             <>
-              <MHeader></MHeader>
               <TopBar></TopBar>
             </>
           }
@@ -96,6 +96,7 @@ export default function MainRouter() {
           <Route path="suivi" element={<Suivi />} />
           <Route path="avis" element={<Avis />} />
           <Route path="critiquesC" element={<CritiquesC />} />
+          <Route path="contact" element={<ContactForm />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />

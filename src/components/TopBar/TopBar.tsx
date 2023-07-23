@@ -12,14 +12,17 @@ import {
   EditOutlined,
 } from "@ant-design/icons";
 import { useParams, Link, Outlet } from "react-router-dom";
-
+import React from "react";
+import ContactForm from "./ContactForm";
+import { Form, Input, Button } from "antd";
 const { Header } = Layout;
 
 const TopBar = () => {
+  const [showContactForm, setShowContactForm] = useState(false);
   const apiKey = "e8d2b17f";
   const [userData, setUserData] = useState({});
   const { id } = useParams();
-  const [tableOfLike, setTableOfLike] = useState([]);
+  const [opinionsTable, setOpinionsTable] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3000/user/" + id)
@@ -40,15 +43,20 @@ const TopBar = () => {
 
   const getOpinions = async () => {
     try {
-      const response = await fetch("http://localhost:3000/like/user/" + id);
-      const dataLikes = await response.json();
+      console.log(id);
+      const response = await fetch("http://localhost:3000/topic/byUser/" + id);
+      const opinionsData = await response.json();
+      console.log("OPINIONS DATA", opinionsData);
+      setOpinionsTable(opinionsData);
       return "ok";
     } catch (error) {
       console.error("Error occurred while fetching data:", error);
     }
   };
-
-  getOpinions();
+  console.log(opinionsTable);
+  useEffect(() => {
+    getOpinions();
+  }, []);
 
   return (
     <>
@@ -74,7 +82,6 @@ const TopBar = () => {
             {userData.firstName}
           </Typography.Text>
         </div>
-
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1" icon={<HeartOutlined />}>
             {/* <Link to={`/user/${id}/suivi`} state={{ from: tableOfLike }}>
@@ -83,13 +90,21 @@ const TopBar = () => {
             <Link to={`/user/${id}/suivi`}>Suivi</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<CommentOutlined />}>
-            <Link to={`/user/${id}/avis`}> Avis</Link>
+            <Link to={`/user/${id}/avis`} state={{ from: opinionsTable }}>
+              Avis
+            </Link>
+            {/* <Link to={`/user/${id}/avis`}> Avis</Link> */}
           </Menu.Item>
           <Menu.Item key="3" icon={<EditOutlined />}>
-            <Link to={`/user/${id}/critiquesC`}> Critiques</Link>
+            {/* <Link to={`/user/${id}/critiquesC`}> Critiques</Link> */}
+            <Link to={`/user/${id}/critiquesC`} state={{ from: opinionsTable }}>
+              Critiques
+            </Link>
           </Menu.Item>
           <Menu.Item key="4" icon={<MailOutlined />}>
-            Contacter
+            <Link to={`/user/${id}/contact`} state={{ from: userData }}>
+              Contacter
+            </Link>
           </Menu.Item>
         </Menu>
       </Header>
@@ -101,42 +116,3 @@ const TopBar = () => {
 };
 
 export default TopBar;
-
-//construire une route id
-
-/////copie code pour récupérer les avis
-// const handleClickSuivi = async () => {
-//   try {
-//     const response = await fetch("http://localhost:3000/like/user/" + id);
-//     const dataLikes = await response.json();
-
-//     if (dataLikes.length !== 0) {
-//       const apiKey = "e8d2b17f";
-//       const moviePromises = dataLikes.map(async (elem) => {
-//         const response1 = await fetch(
-//           `https://www.omdbapi.com/?i=${elem.movieId}&apikey=${apiKey}`
-//         );
-//         const data1 = await response1.json();
-
-//         const response2 = await fetch(
-//           "http://localhost:3000/movie/" + elem.movieId
-//         );
-//         const data2 = await response2.json();
-
-//         return { ...data1, ...data2 };
-//       });
-
-//       const movies = await Promise.all(moviePromises);
-//       setTableOfLike(movies);
-//     }
-//   } catch (error) {
-//     console.error("Error occurred while fetching data:", error);
-//   }
-// };
-
-// // };
-
-// console.log(tableOfLike);
-// useEffect(() => {
-//   handleClickSuivi();
-// }, []);
