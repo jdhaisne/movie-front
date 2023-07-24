@@ -132,7 +132,7 @@ const RatingSystem = () => {
           />
         ))}
       </div>
-      <h3>Notes Spectateurs : </h3>
+      <h3>viewer reviews : </h3>
       <div className="container">
         {starsMean.map((_, index) => (
           <FaStar
