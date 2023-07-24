@@ -14,20 +14,31 @@ export const MUser = () => {
     birthday: "",
     isAdmin: false,
   });
-  const { id } = useParams();
+  const id = localStorage.getItem("id");
+  const { otherUserId } = useParams();
   useEffect(() => {
-    fetch("http://localhost:3000/user/" + id)
-      .then((response) => response.json())
-      .then((data) => {
-        setUserData(data);
-      })
-      .catch((error) => {
-        console.error(
-          "Erreur lors de la récupération de la valeur par défaut :",
-          error
-        );
-      });
-  }, [id]);
+    if (id) {
+      const userData = localStorage.getItem("user");
+      if (userData) setUserData(JSON.parse(userData));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (otherUserId) {
+      fetch(`http://localhoost:3000/user/${otherUserId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setUserData(data);
+        })
+        .catch((error) => {
+          console.error(
+            "Erreur lors de la récupération de la valeur par défaut :",
+            error
+          );
+        });
+    }
+  }, [otherUserId]);
+  console.log("mu", userData);
   return (
     // <div className="user__wrapper">
     //   {userData && (
