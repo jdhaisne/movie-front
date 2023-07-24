@@ -1,60 +1,84 @@
-// .register {
-//   border: 1px solid black;
-//   padding: 15px;
-//   background-color: ghostwhite;
-// }
+.register {
+  // border: 1px solid black;
+  // padding: 15px;
+  // background-color: ghostwhite;
+  max-width: 30%;
+  width: 100%;
+}
 
+.div-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.div-first {
+  margin-bottom: 2px;
+}
+
+h2 {
+  font-size: 1.3em;
+}
+
+.div-first > :nth-child(1) > :nth-child(1) {
+  padding-bottom: 2px;
+}
 // // // MRegister.scss
 
 // // // MRegisterForm component (no changes)v
 
-.border {
-  border: 1px solid rgb(0, 0, 0);
-  padding: 20px;
-  border-radius: 10px;
-  background-color: cadetblue;
-}
+// .border {
+//   border: 1px solid rgb(0, 0, 0);
+//   padding: 20px;
+//   border-radius: 10px;
+//   background-color: cadetblue;
+// }
 
-.register {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
+// .register {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 10px;
+// }
 
-.register__input-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 300px;
-}
+// .register__input-group {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start;
+//   width: 100%;
+//   max-width: 300px;
+// }
 
-.register__label {
-  display: block;
-  text-align: left;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
+// .register__label {
+//   display: block;
+//   text-align: left;
+//   font-weight: bold;
+//   margin-bottom: 5px;
+// }
 
-.register__text {
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+// .register__text {
+//   width: 100%;
+//   border: 1px solid #ccc;
+//   border-radius: 5px;
+// }
 
-.register__select {
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+// .register__select {
+//   width: 100%;
+//   border: 1px solid #ccc;
+//   border-radius: 5px;
+// }
 
-.register__title {
-  font-size: 17px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
+// .register__title {
+//   font-size: 17px;
+//   font-weight: bold;
+//   margin-bottom: 5px;
+// }
 
-body {
-  background-color: rgb(206, 230, 234);
-}
+// body {
+//   background-color: rgb(206, 230, 234);
+// }
