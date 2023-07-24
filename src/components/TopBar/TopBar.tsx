@@ -57,15 +57,19 @@ const TopBar = () => {
   console.log("test2");
 
   const getOpinions = async () => {
-    try {
-      console.log(id);
-      const response = await fetch("http://localhost:3000/topic/byUser/" + id);
-      const opinionsData = await response.json();
-      console.log("OPINIONS DATA", opinionsData);
-      setOpinionsTable(opinionsData);
-      return "ok";
-    } catch (error) {
-      console.error("Error occurred while fetching data:", error);
+    if (id) {
+      try {
+        console.log(id);
+        const response = await fetch(
+          "http://localhost:3000/topic/byUser/" + id
+        );
+        const opinionsData = await response.json();
+        console.log("OPINIONS DATA", opinionsData);
+        setOpinionsTable(opinionsData);
+        return "ok";
+      } catch (error) {
+        console.error("Error occurred while fetching data:", error);
+      }
     }
   };
   console.log(opinionsTable);
@@ -145,9 +149,6 @@ const TopBar = () => {
           )}
         </Menu>
       </Header>
-      <div className="content">
-        <Outlet />
-      </div>
     </>
   );
 };

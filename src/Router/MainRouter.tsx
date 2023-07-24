@@ -99,20 +99,60 @@ export default function MainRouter() {
           }
         />
         <Route
+          path="/user"
+          element={
+            <>
+              <TopBar></TopBar>
+              <MUser />
+            </>
+          }
+        />
+
+        <Route
+          path="/user/:id/contact"
+          element={
+            <>
+              <TopBar></TopBar>
+              <ContactForm />
+            </>
+          }
+        />
+        <Route
           path="/user/:id"
           element={
             <>
               <TopBar></TopBar>
-              <MUser></MUser>
+              <MUser />
             </>
           }
-        >
-          <Route path="suivi" element={<Suivi />} />
-          <Route path="avis" element={<Avis />} />
-          <Route path="critiquesC" element={<CritiquesC />} />
-          <Route path="contact" element={<ContactForm />} />
-        </Route>
-
+        />
+        <Route
+          path="/user/:id/suivi"
+          element={
+            <>
+              <TopBar></TopBar>
+              <Suivi />
+            </>
+          }
+        />
+        <Route
+          path="/user/:id/avis"
+          element={
+            <>
+              <TopBar></TopBar>
+              <Avis />
+            </>
+          }
+        />
+        <Route
+          path="/user/:id/critiquesC"
+          element={
+            <>
+              <TopBar></TopBar>
+              <CritiquesC />
+            </>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
