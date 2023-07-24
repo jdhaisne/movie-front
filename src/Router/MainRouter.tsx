@@ -23,6 +23,7 @@ import Avis from "../components/TopBar/Avis";
 import Suivi from "../components/TopBar/Suivi";
 import CritiquesC from "../components/TopBar/CritiquesC";
 import ContactForm from "../components/TopBar/ContactForm";
+import { MUser } from "../pages/MUser/MUser";
 
 export default function MainRouter() {
   return (
@@ -100,6 +101,7 @@ export default function MainRouter() {
           element={
             <>
               <TopBar></TopBar>
+              <MUser></MUser>
             </>
           }
         >
