@@ -8,6 +8,8 @@ import { SubmitHandler } from "react-hook-form";
 
 import "./MRegister.scss";
 import { MForm } from "../MForm/MForm";
+import { Mselect } from "../MSelect/MSelect";
+import { NavLink } from "react-router-dom";
 
 type Inputs = {
   firstName: string;
@@ -31,7 +33,7 @@ export const MRegisterForm = () => {
     const url = `http://localhost:3000/user/signup`;
     let res = {};
     const body = await JSON.stringify(data);
-   
+
     // const body = data;
     console.log("body", body);
     try {
@@ -42,91 +44,143 @@ export const MRegisterForm = () => {
         headers: {
           "Content-Type": "application/json", // Specify the content type as JSON
           "Access-Control-Allow-Origin": "*", // Update this based on your CORS requirements
-          
         },
-      
-      }
-     )
-     console.log('test23')} catch (error) {}
+      });
+      console.log("test23");
+    } catch (error) {}
 
+    if (res.ok) {
+      alert("Inscription réussie ! Connectez-vous pour explorer Movie Talk. ");
+      resetForm();
+    }
     console.log(res);
   };
+
+  const resetForm = () => {
+    const formInputs = document.querySelectorAll(".register__text");
+    formInputs.forEach((input) => (input.value = ""));
+
+    // Réinitialiser la valeur de l'input du Mselect (s'il est utilisé comme un champ du formulaire)
+    const selectInput = document.getElementById("profil");
+    if (selectInput) {
+      selectInput.value = "Director"; // Remettez la valeur par défaut de l'option souhaitée
+    }
+    const birthDateInput = document.getElementById("birthDate");
+    if (birthDateInput) {
+      birthDateInput.value = "jj/mm/aaaa"; // Remettez la valeur par défaut de l'option souhaitée
+    }
+  };
+
   return (
     <MForm<Inputs>
-      title="register"
       className="register"
       defaultValues={defaultValues}
       onSubmit={onSubmit}
     >
-      <MInput
-        className="register__text"
-        label="first name"
-        id="firstName"
-        type="text"
-        placeholder=""
-        hasLabel={true}
-        name="firstName"
-        {...nameValidation}
-      ></MInput>
-      <MInput
-        className="register__text"
-        label="last name"
-        id="lastName"
-        type="text"
-        placeholder=""
-        hasLabel={true}
-        name="lastName"
-        {...nameValidation}
-      ></MInput>
-      <MInput
-        className="register__text"
-        label="mail"
-        id="mail"
-        type="text"
-        placeholder=""
-        hasLabel={true}
-        {...mailValidation}
-      ></MInput>
-      <MInput
-        className="register__text"
-        label="password"
-        id="password"
-        type="password"
-        placeholder=""
-        hasLabel={true}
-        {...passwordValidation}
-      ></MInput>
-      <MInput
-        className="register__text"
-        label="confirm password"
-        id="confirmPassword"
-        type="password"
-        placeholder=""
-        hasLabel={true}
-        name="confirm"
-        validation={{
-          ...passwordValidation.validation,
-          // validate: {                   DONT WORK TO BE DONE
-          //   value: (val: string) => {
-          //     methods.watch("password")[0] == val || "password does not +";
-          //   },
-          //   message: "macthes",
-          // },
-        }}
-      ></MInput>
-      <MInput
-        label="birth date"
-        id="birthDate"
-        type="date"
-        placeholder=""
-        hasLabel={true}
-        {...dobValidation}
-      ></MInput>
-      {/* <Mselect>
-            <option>director</option>
-            <option>member</option>
-          </Mselect> */}
-      <MButton>Register</MButton>
+      <p className="register__title">
+        Please, fill this form to register.{" "}
+        <NavLink to="/login">Already an account ? sign in here.</NavLink>
+      </p>
+      <div className="border">
+        <div className="register__input-group">
+          <label className="register__label" htmlFor="firstName">
+            First Name:
+          </label>
+          <MInput
+            className=" register__text"
+            id="firstName"
+            type="text"
+            placeholder=""
+            name="firstName"
+            {...nameValidation}
+          />
+        </div>
+
+        <div className="register__input-group">
+          <label className="register__label" htmlFor="lastName">
+            Last Name:
+          </label>
+          <MInput
+            className="register__text"
+            id="lastName"
+            type="text"
+            placeholder=""
+            name="lastName"
+            {...nameValidation}
+          />
+        </div>
+
+        <div className="register__input-group">
+          <label className="register__label" htmlFor="mail">
+            Mail:
+          </label>
+          <MInput
+            className="register__text"
+            id="mail"
+            type="text"
+            placeholder=""
+            hasLabel={true}
+            {...mailValidation}
+          />
+        </div>
+
+        <div className="register__input-group">
+          <label className="register__label" htmlFor="password">
+            Password:
+          </label>
+          <MInput
+            className="register__text"
+            id="password"
+            type="password"
+            placeholder=""
+            hasLabel={true}
+            {...passwordValidation}
+          />
+        </div>
+
+        <div className="register__input-group">
+          <label className="register__label" htmlFor="confirmPassword">
+            Confirm Password:
+          </label>
+          <MInput
+            className="register__text"
+            id="confirmPassword"
+            type="password"
+            placeholder=""
+            hasLabel={true}
+            name="confirm"
+            validation={{
+              ...passwordValidation.validation,
+            }}
+          />
+        </div>
+
+        <div className="register__input-group">
+          <label className="register__label" htmlFor="birthDate">
+            Birth Date:
+          </label>
+          <MInput
+            className="register__text"
+            id="birthDate"
+            type="date"
+            placeholder=""
+            hasLabel={true}
+            {...dobValidation}
+          />
+        </div>
+
+        <div className="register__input-group">
+          <label className="register__label" htmlFor="profil">
+            Profil:
+          </label>
+          <Mselect id="profil">
+            <option>Director</option>
+            <option>Member</option>
+          </Mselect>
+        </div>
+
+        <MButton>Register</MButton>
+      </div>
     </MForm>
   );
 };
