@@ -149,9 +149,6 @@ const TopBar = () => {
           )}
         </Menu>
       </Header>
-      <div className="content">
-        <Outlet />
-      </div>
     </>
   );
 };
