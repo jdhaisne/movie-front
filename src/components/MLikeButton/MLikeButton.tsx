@@ -1,6 +1,8 @@
 import { MButton } from "../MButton/MButton";
 
-export const MLikeButton = ({ movieId }: { movieId: string }) => {
+
+export const MLikeButton = ({ movieId }: { movieId: string | number }) => {
+
   const onClick = async () => {
     try {
       const url = `http://localhost:3000/like`;
@@ -20,5 +22,7 @@ export const MLikeButton = ({ movieId }: { movieId: string }) => {
       });
     } catch (err) {}
   };
-  return <MButton onClick={onClick}>SUIVRE</MButton>;
+
+  return <MButton onClick={onClick}>subscribe</MButton>;
+
 };
