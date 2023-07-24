@@ -93,9 +93,6 @@ const TopBar = () => {
           <Typography.Text style={{ color: "white", marginRight: "8px" }}>
             <Link to="/">MOVIE TALK</Link>
           </Typography.Text>
-          <Typography.Text style={{ color: "white" }}>
-            {userData.firstName}
-          </Typography.Text>
         </div>
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1" icon={<HeartOutlined />}>
