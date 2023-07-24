@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useParams, Link, Outlet } from "react-router-dom";
+import { TLike, TMovie } from "../../type";
 
 const Suivi = () => {
   //   const location = useLocation();
@@ -10,7 +11,7 @@ const Suivi = () => {
   //   console.log(from);
 
   const { id } = useParams();
-  const [tableOfLike, setTableOfLike] = useState([]);
+  const [tableOfLike, setTableOfLike] = useState<TMovie[]>([]);
 
   const handleClickSuivi = async () => {
     try {
@@ -19,7 +20,7 @@ const Suivi = () => {
 
       if (dataLikes.length !== 0) {
         const apiKey = "e8d2b17f";
-        const moviePromises = dataLikes.map(async (elem) => {
+        const moviePromises = dataLikes.map(async (elem: TLike) => {
           const response1 = await fetch(
             `https://www.omdbapi.com/?i=${elem.movieId}&apikey=${apiKey}`
           );
@@ -52,7 +53,9 @@ const Suivi = () => {
     <div>
       {tableOfLike.length > 0 ? (
         tableOfLike.map((elem, index) => (
-          <img key={index} src={elem.Poster} alt={`Image ${index + 1}`} />
+          <Link to={`/movie/${elem.imdbID}`}>
+            <img key={index} src={elem.Poster} alt={`Image ${index + 1}`} />
+          </Link>
         ))
       ) : (
         <p>Aucun film suivi pour le moment.</p>

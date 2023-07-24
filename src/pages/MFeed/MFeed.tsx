@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { TLike, TTopic } from "../../type";
 import { MTopicCard } from "../../components/MTopic/MTopicCard";
 
+import "./MFeed.scss";
+
 export const MFeed = () => {
   const apiKey = "e8d2b17f";
   const [topics, setTopics] = useState<any[]>([
@@ -38,36 +40,36 @@ export const MFeed = () => {
 
     const getTopics = async () => {
       console.log("t", likes, typeof likes);
-    
+
       try {
         const topicPromises = likes.map(async (like: TLike) => {
           try {
             const res = await fetch(`${url}topic/${like.movieId}`);
             const resTopics: TTopic[] = await res.json();
+            console.log("resTopic", resTopics);
             return resTopics;
           } catch (error) {
             return [];
           }
         });
-    
+
         const topicsArrays = await Promise.all(topicPromises);
         const mergedTopics = topicsArrays.flat();
-        console.log(mergedTopics);
+        console.log("merge", mergedTopics);
         return mergedTopics;
       } catch (error) {
         return [];
       }
     };
-    
 
     const all = async () => {
       // console.log(topicsArray)
       await getLikes();
       const topicsArray = await getTopics();
       console.log("ff", topicsArray, typeof topicsArray);
-      console.log(topicsArray)
+      console.log(topicsArray);
       setTopics(topicsArray);
-      console.log(topicsArray)
+      console.log(topicsArray);
     };
     all();
   }, []);
@@ -75,7 +77,7 @@ export const MFeed = () => {
 
   return (
     <>
-      <div>
+      <div className="feed__wrapper">
         {topics.map((topic, index) => {
           return (
             <>

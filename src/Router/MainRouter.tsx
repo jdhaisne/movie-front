@@ -32,7 +32,7 @@ export default function MainRouter() {
           path="/"
           element={
             <>
-              <MHeader />
+              <TopBar />
               <App />
             </>
           }
@@ -41,7 +41,7 @@ export default function MainRouter() {
           path="/home"
           element={
             <>
-              <MHeader />
+              <TopBar />
               <MHome />
             </>
           }
@@ -50,7 +50,7 @@ export default function MainRouter() {
           path="/feed"
           element={
             <>
-              <MHeader />
+              <TopBar />
               <MFeed />
             </>
           }
@@ -59,7 +59,7 @@ export default function MainRouter() {
           path="/movie/:id"
           element={
             <>
-              <MHeader />
+              <TopBar />
               <MMovie />
             </>
           }
@@ -72,7 +72,7 @@ export default function MainRouter() {
           path="/movies"
           element={
             <>
-              <MHeader />
+              <TopBar />
               <MMovies />
             </>
           }
@@ -81,7 +81,7 @@ export default function MainRouter() {
           path="/register"
           element={
             <>
-              <MHeader></MHeader>
+              <TopBar></TopBar>
               <MRegister />
             </>
           }
@@ -90,7 +90,7 @@ export default function MainRouter() {
           path="/login"
           element={
             <>
-              <MHeader></MHeader>
+              <TopBar></TopBar>
               <MLogin />
             </>
           }

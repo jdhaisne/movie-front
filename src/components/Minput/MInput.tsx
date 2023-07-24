@@ -15,7 +15,7 @@ export const MInput = ({
   name,
 }: {
   className?: string;
-  label: string;
+  label?: string;
   id: string;
   type: string;
   placeholder: string;

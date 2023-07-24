@@ -3,7 +3,7 @@ import { MInput } from "../Minput/MInput";
 import { MForm } from "../MForm/MForm";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { MButton } from "../MButton/MButton";
-import  "./MComments.css"
+import "./MComments.scss";
 
 interface dataCommentaire {
   id: string;
@@ -20,7 +20,13 @@ const defaultValues: Inputs = {
   commentaire: "",
 };
 
-export const MComments = ({ topicID, className }: { topicID: string, className: string }) => {
+export const MComments = ({
+  topicID,
+  className,
+}: {
+  topicID: string;
+  className: string;
+}) => {
   const [data, setData] = useState<any[]>([]);
   const callApi = async () => {
     try {
@@ -88,15 +94,14 @@ export const MComments = ({ topicID, className }: { topicID: string, className: 
           <MButton className="buttonPost">Envoi ton com</MButton>
         </MForm>
         <div className={className}>
-        {data.map((elem: dataCommentaire) => {
-          return (
-            <div className="oneComment">
-              <span className="userName">{elem.userId}:</span>
-              <span> {elem.message}</span>
-              
-            </div>
-          );
-        })}
+          {data.map((elem: dataCommentaire) => {
+            return (
+              <div className="oneComment">
+                <span className="userName">{elem.userId}:</span>
+                <span> {elem.message}</span>
+              </div>
+            );
+          })}
         </div>
       </>
     </div>
