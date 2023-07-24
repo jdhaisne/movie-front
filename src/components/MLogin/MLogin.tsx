@@ -3,7 +3,9 @@ import { MInput } from "../Minput/MInput";
 import { SubmitHandler } from "react-hook-form";
 import { MForm } from "../MForm/MForm";
 import "./MLogin.scss";
-
+import { Form, Input, Button, DatePicker, Select } from "antd";
+import { useRef } from "react";
+import { mailValidation } from "../../validation/mailValidation";
 type Inputs = {
   Mail: string;
   Password: string;
@@ -15,6 +17,7 @@ const defaultValues: Inputs = {
 };
 
 export const MLoginForm = () => {
+  const formRef = useRef();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     console.log("register with:", data);
     const url = `http://localhost:3000/user/signin`; // route du back
@@ -68,30 +71,34 @@ export const MLoginForm = () => {
   };
 
   return (
-    <MForm<Inputs>
-      title="login"
-      className="login"
-      defaultValues={defaultValues}
-      onSubmit={onSubmit}
-    >
-      <MInput
-        className="login__text"
-        label="mail"
-        id="mail"
-        type="text"
-        placeholder=""
-        name="mail"
-      ></MInput>
-      <MInput
-        className="login__text"
-        label="password"
-        id="password"
-        type="password"
-        placeholder=""
-        hasLabel={true}
-        name="password"
-      ></MInput>
-      <MButton>Log in</MButton>
-    </MForm>
+    <div className="login__wrapper">
+      <Form
+        title="login"
+        className="login"
+        onFinish={onSubmit}
+        layout="vertical"
+        style={{ maxWidth: "30%", width: "100%" }}
+        ref={formRef}
+      >
+        <Form.Item
+          label="mail"
+          className="div-first"
+          // name="password"
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="password"
+          className="div-first"
+          // name="password"
+        >
+          <Input.Password />
+        </Form.Item>
+        <Form.Item></Form.Item>
+        <Button type="primary" htmlType="submit">
+          Log in
+        </Button>
+      </Form>
+    </div>
   );
 };
