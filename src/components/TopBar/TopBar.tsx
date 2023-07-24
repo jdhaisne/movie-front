@@ -83,15 +83,15 @@ const TopBar = () => {
         }}
       >
         <div style={{ display: "flex", alignItems: "center" }}>
-          {userData.role === "utilisateur" ? (
+          {/* {userData.role === "utilisateur" ? (
             <SmileOutlined></SmileOutlined>
           ) : userData.role === "administrateur" ? (
             <KeyOutlined></KeyOutlined>
           ) : userData.role === "réalisateur" ? (
             <VideoCameraAddOutlined></VideoCameraAddOutlined>
-          ) : null}
+          ) : null} */}
           <Typography.Text style={{ color: "white", marginRight: "8px" }}>
-            {userData.lastName}
+            <Link to="/">MOVIE TALK</Link>
           </Typography.Text>
           <Typography.Text style={{ color: "white" }}>
             {userData.firstName}
