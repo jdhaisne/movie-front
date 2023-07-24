@@ -78,6 +78,7 @@ export const MFeed = () => {
   return (
     <>
       <div className="feed__wrapper">
+        <h2>Your feed:</h2>
         {topics.map((topic, index) => {
           return (
             <>
