@@ -24,7 +24,7 @@ const ContactForm = () => {
   return (
     <div className="formulaire">
       <h2>
-        Envoyer un message à {from.lastName} {from.firstName}
+        send message to {from.lastName} {from.firstName}
       </h2>
       <div
         style={{
@@ -70,7 +70,7 @@ const ContactForm = () => {
 
           <Form.Item>
             <Button type="primary" htmlType="submit">
-              Envoyer
+              send
             </Button>
           </Form.Item>
         </Form>

@@ -91,7 +91,7 @@ export const MLoginForm = () => {
         hasLabel={true}
         name="password"
       ></MInput>
-      <MButton>Connexion</MButton>
+      <MButton>Log in</MButton>
     </MForm>
   );
 };

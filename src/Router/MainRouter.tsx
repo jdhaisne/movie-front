@@ -25,6 +25,7 @@ import Suivi from "../components/TopBar/Suivi";
 import CritiquesC from "../components/TopBar/CritiquesC";
 import ContactForm from "../components/TopBar/ContactForm";
 import { MUser } from "../pages/MUser/MUser";
+import { MOtherUser } from "../pages/MUser/MOtherUser";
 
 export default function MainRouter() {
   return (
@@ -108,51 +109,21 @@ export default function MainRouter() {
           }
         />
 
-        <Route
-          path="/user/:id/contact"
-          element={
-            <>
-              <TopBar></TopBar>
-              <ContactForm />
-            </>
-          }
-        />
+        {/* <Route path="/user/:id/contact" element={<ContactForm />} /> */}
         <Route
           path="/user/:id"
           element={
             <>
               <TopBar></TopBar>
-              <MUser />
+              <MOtherUser />
             </>
           }
-        />
-        <Route
-          path="/user/:id/suivi"
-          element={
-            <>
-              <TopBar></TopBar>
-              <Suivi />
-            </>
-          }
-        />
-        <Route
-          path="/user/:id/avis"
-          element={
-            <>
-              <TopBar></TopBar>
-              <Avis />
-            </>
-          }
-        />
-        <Route
-          path="/user/:id/critiquesC"
-          element={
-            <>
-              <TopBar></TopBar>
-              <CritiquesC />
-            </>
-          }
-        />
+        >
+          <Route path="/user/:id/suivi" element={<Suivi />} />
+          <Route path="/user/:id/avis" element={<Avis />} />
+          <Route path="/user/:id/critiquesC" element={<CritiquesC />} />
+        </Route>
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

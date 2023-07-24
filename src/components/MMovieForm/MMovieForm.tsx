@@ -20,6 +20,7 @@ interface MForm {
 }
 export const MMovieForm = (props: MForm) => {
   const { fetchData } = props;
+  const userId = localStorage.getItem("id");
 
   const { id } = useParams();
   const { register, watch } = useForm();
@@ -27,7 +28,7 @@ export const MMovieForm = (props: MForm) => {
   const onSubmit: SubmitHandler<Inputs> = async (data1) => {
     const data5 = watch("type");
     const data2 = watch("subject");
-    const url = `http://localhost:3000/topic/createTopic/${id}`;
+    const url = `http://localhost:3000/topic/createTopic/${id}/${userId}`;
     let res = {};
     const data3 = `{"subject" :"${data2}"}`;
     const data6 = `{"type" :"${data5}"}`;
@@ -83,12 +84,12 @@ export const MMovieForm = (props: MForm) => {
             <textarea className="textArea" {...register("subject", {})} />
           </label>
 
-          <label className="type">De quel type est ton topic ?</label>
+          <label className="type">Type of post:</label>
 
           <select {...register("type", {})} name="type" id="type-select">
             <option value="">-</option>
-            <option value="Critique">Critique</option>
-            <option value="Commentaire">Commentaire</option>
+            <option value="Critique">Review</option>
+            <option value="Commentaire">Comment</option>
             {/* <option value="commedit">commedie</option>
           <option value="drame">drame</option>
           <option value="commedie dramatique">commedie dramatique</option>
@@ -109,7 +110,7 @@ export const MMovieForm = (props: MForm) => {
           <option value="court metrage">court metrage</option> */}
           </select>
 
-          <MButton className="buttonPost">Créer un post</MButton>
+          <MButton className="buttonPost">Create post</MButton>
         </MForm>
       </div>
     </div>

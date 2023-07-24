@@ -17,27 +17,13 @@ export const MUser = () => {
   const id = localStorage.getItem("id");
   const { otherUserId } = useParams();
   useEffect(() => {
-    if (id) {
+    console.log("e", otherUserId);
+    if (id && !otherUserId) {
       const userData = localStorage.getItem("user");
       if (userData) setUserData(JSON.parse(userData));
     }
   }, []);
 
-  useEffect(() => {
-    if (otherUserId) {
-      fetch(`http://localhoost:3000/user/${otherUserId}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setUserData(data);
-        })
-        .catch((error) => {
-          console.error(
-            "Erreur lors de la récupération de la valeur par défaut :",
-            error
-          );
-        });
-    }
-  }, [otherUserId]);
   console.log("mu", userData);
   return (
     // <div className="user__wrapper">
