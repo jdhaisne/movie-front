@@ -29,53 +29,56 @@ const TopBar = () => {
     birthday: "",
     isAdmin: false,
   });
-  const { id } = useParams();
+
   const localId = localStorage.getItem("id");
   const [opinionsTable, setOpinionsTable] = useState([]);
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   if (id)
+  //     fetch("http://localhost:3000/user/" + id)
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         setUserData(data);
+  //       })
+  //       .catch((error) => {
+  //         console.error(
+  //           "Erreur lors de la récupération de la valeur par défaut :",
+  //           error
+  //         );
+  //       });
+  //   else if (localId) {
+  //     const localUser = localStorage.getItem("user");
+  //     if (localUser) setUserData(JSON.parse(localUser));
+  //   }
+  // }, [id]); // Ajout de [id] en tant que dépendance pour que le useEffect soit exécuté seulement lorsque id change.
   useEffect(() => {
-    if (id)
-      fetch("http://localhost:3000/user/" + id)
-        .then((response) => response.json())
-        .then((data) => {
-          setUserData(data);
-        })
-        .catch((error) => {
-          console.error(
-            "Erreur lors de la récupération de la valeur par défaut :",
-            error
-          );
-        });
-    else if (localId) {
-      const localUser = localStorage.getItem("user");
-      if (localUser) setUserData(JSON.parse(localUser));
-    }
-  }, [id]); // Ajout de [id] en tant que dépendance pour que le useEffect soit exécuté seulement lorsque id change.
-
+    const localUser = localStorage.getItem("user");
+    if (localUser) setUserData(JSON.parse(localUser));
+  }, []);
   console.log("userdata", userData);
   console.log("test2");
 
-  const getOpinions = async () => {
-    if (id) {
-      try {
-        console.log(id);
-        const response = await fetch(
-          "http://localhost:3000/topic/byUser/" + id
-        );
-        const opinionsData = await response.json();
-        console.log("OPINIONS DATA", opinionsData);
-        setOpinionsTable(opinionsData);
-        return "ok";
-      } catch (error) {
-        console.error("Error occurred while fetching data:", error);
-      }
-    }
-  };
-  console.log(opinionsTable);
-  useEffect(() => {
-    getOpinions();
-  }, []);
+  // const getOpinions = async () => {
+  //   if (id) {
+  //     try {
+  //       console.log(id);
+  //       const response = await fetch(
+  //         "http://localhost:3000/topic/byUser/" + id
+  //       );
+  //       const opinionsData = await response.json();
+  //       console.log("OPINIONS DATA", opinionsData);
+  //       setOpinionsTable(opinionsData);
+  //       return "ok";
+  //     } catch (error) {
+  //       console.error("Error occurred while fetching data:", error);
+  //     }
+  //   }
+  // };
+  // console.log(opinionsTable);
+  // useEffect(() => {
+  //   getOpinions();
+  // }, []);
 
   return (
     <>
@@ -110,7 +113,7 @@ const TopBar = () => {
               to={`/user/${userData.id}/avis`}
               state={{ from: opinionsTable }}
             >
-              Avis
+              comment
             </Link>
             {/* <Link to={`/user/${id}/avis`}> Avis</Link> */}
           </Menu.Item>
@@ -120,7 +123,7 @@ const TopBar = () => {
               to={`/user/${userData.id}/critiquesC`}
               state={{ from: opinionsTable }}
             >
-              Critiques
+              review
             </Link>
           </Menu.Item>
           <Menu.Item key="4" icon={<MailOutlined />}>
@@ -128,7 +131,7 @@ const TopBar = () => {
               to={`/user/${userData.id}/contact`}
               state={{ from: userData }}
             >
-              Contacter
+              Contact
             </Link>
           </Menu.Item>
           <Menu.Item>
