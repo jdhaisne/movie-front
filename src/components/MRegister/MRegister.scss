@@ -1,5 +1,60 @@
+// .register {
+//   border: 1px solid black;
+//   padding: 15px;
+//   background-color: ghostwhite;
+// }
+
+// // // MRegister.scss
+
+// // // MRegisterForm component (no changes)v
+
+.border {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 20px;
+  border-radius: 10px;
+  background-color: cadetblue;
+}
+
 .register {
-    border: 1px solid black;
-    padding: 15px;
-    background-color: ghostwhite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.register__input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 300px;
+}
+
+.register__label {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.register__text {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.register__select {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.register__title {
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+body {
+  background-color: rgb(206, 230, 234);
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import "./MSelect.css";
 
 export const Mselect = ({
   children,
@@ -9,5 +10,5 @@ export const Mselect = ({
   validation: any;
   name: string;
 }) => {
-  return <select>{children}</select>;
+  return <select className="select">{children}</select>;
 };
