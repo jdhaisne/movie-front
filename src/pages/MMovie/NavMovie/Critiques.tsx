@@ -1,7 +1,23 @@
-import React from "react";
+import { useLocation } from "react-router-dom";
 
 const Critiques = () => {
-  return <div>Critiques</div>;
+  const location = useLocation();
+  const { from } = location.state;
+
+  console.log(from);
+
+  return (
+    <div>
+      {from.map((elem: any, index: number) => {
+        return (
+          <div key={index}>
+            <p>Source: {elem.Source}</p>
+            <p>Note: {elem.Value}</p>
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default Critiques;

@@ -7,6 +7,7 @@ import MMovie from "../pages/MMovie/MMovie";
 import Notes from "../pages/MMovie/NavMovie/Notes";
 import Critiques from "../pages/MMovie/NavMovie/Critiques";
 import Comments from "../pages/MMovie/NavMovie/Comments";
+import Plot from "../pages/MMovie/NavMovie/Plot";
 //
 import MMovies from "../pages/MMovies/MMovies";
 import { MRegister } from "../pages/MRegister/MRegister";
@@ -48,6 +49,7 @@ export default function MainRouter() {
           <Route path="notes" element={<Notes />} />
           <Route path="critiques" element={<Critiques />} />
           <Route path="comments" element={<Comments />} />
+          <Route path="plot" element={<Plot />} />
         </Route>
         <Route
           path="/movies"

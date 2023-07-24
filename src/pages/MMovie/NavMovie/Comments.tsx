@@ -1,7 +1,12 @@
-import React from "react";
+import { useLocation } from "react-router-dom";
 
 const Comments = () => {
-  return <div>Commentaires</div>;
+  const location = useLocation();
+  const { from } = location.state;
+
+  console.log(from);
+
+  return <div>{from}</div>;
 };
 
 export default Comments;

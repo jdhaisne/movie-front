@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 
-const Notes = () => {
+const Plot = () => {
   const location = useLocation();
   const { from } = location.state;
 
@@ -9,4 +9,4 @@ const Notes = () => {
   return <div>{from}</div>;
 };
 
-export default Notes;
+export default Plot;
