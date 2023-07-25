@@ -79,7 +79,7 @@ export const MMovieForm = (props: MForm) => {
     <div className="globalCreate">
       <div className="createTopic">
         <MForm<Inputs>
-          title="Crée ton Topic"
+          title="Create post"
           className="moviePost"
           defaultValues={defaultValues}
           onSubmit={onSubmit}
