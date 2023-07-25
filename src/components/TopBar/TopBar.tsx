@@ -126,14 +126,7 @@ const TopBar = () => {
               review
             </Link>
           </Menu.Item>
-          <Menu.Item key="4" icon={<MailOutlined />}>
-            <Link
-              to={`/user/${userData.id}/contact`}
-              state={{ from: userData }}
-            >
-              Contact
-            </Link>
-          </Menu.Item>
+
           <Menu.Item>
             {localId && <Link to={`/user/account/${localId}`}>compte</Link>}
             {!localId && <Link to="/register">register</Link>}
