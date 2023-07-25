@@ -86,7 +86,7 @@ export const MMovieForm = (props: MForm) => {
         >
           <MInput
             className="moviePost__text"
-            label="Titre"
+            label="Title"
             id="moviePostTitle"
             type="text"
             placeholder="Post"
@@ -103,8 +103,8 @@ export const MMovieForm = (props: MForm) => {
 
           <select {...register("type", {})} name="type" id="type-select">
             <option value="">-</option>
-            <option value="Critique">Critique</option>
-            <option value="Avis">Avis</option>
+            <option value="Critique">Review</option>
+            <option value="Avis">opinion</option>
             {/* <option value="commedit">commedie</option>
           <option value="drame">drame</option>
           <option value="commedie dramatique">commedie dramatique</option>
