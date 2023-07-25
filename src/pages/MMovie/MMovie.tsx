@@ -97,7 +97,7 @@ const MMovie = () => {
                 <div className="div-post">
                   <MMovieForm fetchData={fetchData}></MMovieForm>
                 </div>
-                <div className="div-left">
+                <div className="div-right">
                   <div className="infos-movie">
                     <h2 className="SingleMovie-title">{movieResult.Title}</h2>
 
@@ -154,7 +154,6 @@ const MMovie = () => {
                 </div>
               </div>
             </nav>
-            <MMovieForm fetchData={fetchData}></MMovieForm>
             <MTopic ourData={ourData}></MTopic>
           </div>
         </>
