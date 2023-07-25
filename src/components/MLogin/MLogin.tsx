@@ -83,14 +83,14 @@ export const MLoginForm = () => {
         <Form.Item
           label="mail"
           className="div-first"
-          // name="password"
+          name="mail"
         >
           <Input />
         </Form.Item>
         <Form.Item
           label="password"
           className="div-first"
-          // name="password"
+          name="password"
         >
           <Input.Password />
         </Form.Item>

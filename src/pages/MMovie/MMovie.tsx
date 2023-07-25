@@ -169,8 +169,8 @@ const MMovie = () => {
                 </div>
               </div>
             </nav>
-            <MMovieForm fetchData={fetchData}></MMovieForm>
-            <MTopic ourData={ourData}></MTopic>
+            <MMovieForm fetchData={fetchData} imgAndName ={imgAndName}></MMovieForm>
+            <MTopic ourData={ourData} ></MTopic>
 
           </div>
         </>
