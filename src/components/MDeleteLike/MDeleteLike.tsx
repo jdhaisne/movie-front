@@ -20,5 +20,5 @@ export const MDeleteLikeButton = ({ movieId }: { movieId: string }) => {
       });
     } catch (err) {}
   };
-  return <MButton onClick={onClick}>NE PLUS SUIVRE</MButton>;
+  return <MButton onClick={onClick}>unsubscribe</MButton>;
 };

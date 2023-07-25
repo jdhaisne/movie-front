@@ -14,20 +14,17 @@ export const MUser = () => {
     birthday: "",
     isAdmin: false,
   });
-  const { id } = useParams();
+  const id = localStorage.getItem("id");
+  const { otherUserId } = useParams();
   useEffect(() => {
-    fetch("http://localhost:3000/user/" + id)
-      .then((response) => response.json())
-      .then((data) => {
-        setUserData(data);
-      })
-      .catch((error) => {
-        console.error(
-          "Erreur lors de la récupération de la valeur par défaut :",
-          error
-        );
-      });
-  }, [id]);
+    console.log("e", otherUserId);
+    if (id && !otherUserId) {
+      const userData = localStorage.getItem("user");
+      if (userData) setUserData(JSON.parse(userData));
+    }
+  }, []);
+
+  console.log("mu", userData);
   return (
     // <div className="user__wrapper">
     //   {userData && (

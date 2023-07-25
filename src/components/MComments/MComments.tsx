@@ -91,7 +91,7 @@ export const MComments = ({
             name="message"
           ></MInput>
 
-          <MButton className="buttonPost">Envoi ton com</MButton>
+          <MButton className="buttonPost">send</MButton>
         </MForm>
         <div className={className}>
           {data.length > 0 ? (

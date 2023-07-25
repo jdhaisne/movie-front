@@ -24,15 +24,26 @@ interface MForm {
 
 export const MMovieForm = (props: MForm) => {
   const { fetchData } = props;
+<<<<<<< HEAD
   const { imgAndName } = props;
   console.log(imgAndName)
+=======
+  const userId = localStorage.getItem("id");
+
+>>>>>>> 219c193caf2d5c0761e78b654e909afe6dba16f1
   const { id } = useParams();
   const { register, watch } = useForm();
 
   const onSubmit: SubmitHandler<Inputs> = async (data1) => {
+<<<<<<< HEAD
     let data3 = watch("type");
     let data2 = watch("subject");
     const url = `http://localhost:3000/topic/createTopic/${id}`;
+=======
+    const data5 = watch("type");
+    const data2 = watch("subject");
+    const url = `http://localhost:3000/topic/createTopic/${id}/${userId}`;
+>>>>>>> 219c193caf2d5c0761e78b654e909afe6dba16f1
     let res = {};
     data2 = `{"subject" :"${data2}"}`;
     data3 = `{"type" :"${data3}"}`;
@@ -100,12 +111,17 @@ export const MMovieForm = (props: MForm) => {
             <textarea className="textArea" {...register("subject", {})} />
           </label>
 
-          <label className="type">De quel type est ton topic ?</label>
+          <label className="type">Type of post:</label>
 
           <select {...register("type", {})} name="type" id="type-select">
             <option value="">-</option>
+<<<<<<< HEAD
             <option value="Critique">Critique</option>
             <option value="Avis">Avis</option>
+=======
+            <option value="Critique">Review</option>
+            <option value="Commentaire">Comment</option>
+>>>>>>> 219c193caf2d5c0761e78b654e909afe6dba16f1
             {/* <option value="commedit">commedie</option>
           <option value="drame">drame</option>
           <option value="commedie dramatique">commedie dramatique</option>
@@ -126,7 +142,7 @@ export const MMovieForm = (props: MForm) => {
           <option value="court metrage">court metrage</option> */}
           </select>
 
-          <MButton className="buttonPost">Créer un post</MButton>
+          <MButton className="buttonPost">Create post</MButton>
         </MForm>
       </div>
     </div>

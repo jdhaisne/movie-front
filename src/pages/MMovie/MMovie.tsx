@@ -108,7 +108,7 @@ const MMovie = () => {
                 <h2 className="SingleMovie-title">{movieResult.Title}</h2>
 
                 <p className="singleMovie-director">
-                  Réalisé par {movieResult.Director}
+                  Made by{movieResult.Director}
                 </p>
                 <div className="div-nav">
                   <nav>
@@ -128,7 +128,7 @@ const MMovie = () => {
                           activeClassName="active"
                           state={{ from: movieResult.Ratings }}
                         >
-                          Critiques presse
+                          Press review
                         </NavLink>
                       </li>
                       <li>
@@ -137,7 +137,7 @@ const MMovie = () => {
                           activeClassName="active"
                           state={{ from: movieResult.Plot }}
                         >
-                          Autres infos
+                          Other infos
                         </NavLink>
                       </li>
                       <li>
