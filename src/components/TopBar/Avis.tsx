@@ -24,7 +24,7 @@ const Avis = () => {
     <div className="topicGlobal">
       <div className="topic">
         {comments.map((elem, index) => {
-          if (elem.type === "Critique") {
+          if (elem.type === "Avis") {
             return (
               <div className="oneTopicCri" key={index}>
                 <p className="type">{elem.type}</p>
