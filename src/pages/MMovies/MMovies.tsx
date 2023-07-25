@@ -31,7 +31,7 @@ const Movies: React.FC = () => {
                 <img
                   src={elem.Poster}
                   alt={elem.Poster}
-                  className={`image-${index}`}
+                  className={`image-${index}` + " movie-img"}
                 />
               </Link>
             </div>
