@@ -95,15 +95,16 @@ export const MComments = ({
         </MForm>
         <div className={className}>
           {data.length > 0 ? (
-          data.map((elem: dataCommentaire) => {
-            return (
-              <div className="oneComment">
-                <span className="userName">{elem.userId}:</span>
-                <span> {elem.message}</span>
-              </div>
-            );
-          })):(
-            <p>Aucun commentaire disponible</p>
+            data.map((elem: dataCommentaire) => {
+              return (
+                <div className="oneComment">
+                  <span className="userName">{elem.userId}:</span>
+                  <span> {elem.message}</span>
+                </div>
+              );
+            })
+          ) : (
+            <p>No review :(</p>
           )}
         </div>
       </>

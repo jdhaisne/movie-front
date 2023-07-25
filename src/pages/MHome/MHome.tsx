@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./MHome.css";
+import { MFeed } from "../MFeed/MFeed";
 
 interface SearchResult {
   Title: string;
@@ -86,6 +87,7 @@ const MHome: React.FC = () => {
       <button onClick={handleSearch} disabled={loading}>
         {loading ? "Chargement..." : "Rechercher"}
       </button>
+      <MFeed></MFeed>
     </>
   );
 };

@@ -18,14 +18,13 @@ const defaultValues: Inputs = {
 
 interface MForm {
   fetchData: () => Promise<void>;
-  imgAndName:string[];
+  imgAndName: string[];
 }
-
 
 export const MMovieForm = (props: MForm) => {
   const { fetchData } = props;
   const { imgAndName } = props;
-  console.log(imgAndName)
+  console.log(imgAndName);
   const { id } = useParams();
   const { register, watch } = useForm();
 
@@ -38,22 +37,22 @@ export const MMovieForm = (props: MForm) => {
     data3 = `{"type" :"${data3}"}`;
     console.log(data3, "test");
     console.log(data2);
-    let img = `{"image":"${imgAndName[1]}"}`
-    let userName = `{"userName":"${imgAndName[0]}"}`
+    let img = `{"image":"${imgAndName[1]}"}`;
+    let userName = `{"userName":"${imgAndName[0]}"}`;
 
-    let userId = `{"userId":"${imgAndName[2]}"}`
-    userId = JSON.parse(userId)
-    userName = JSON.parse(userName)
-    console.log(userId)
-    img = JSON.parse(img)
-    console.log(img)
+    let userId = `{"userId":"${imgAndName[2]}"}`;
+    userId = JSON.parse(userId);
+    userName = JSON.parse(userName);
+    console.log(userId);
+    img = JSON.parse(img);
+    console.log(img);
     data2 = JSON.parse(data2);
     data3 = JSON.parse(data3);
     const data = Object.assign({}, data1, data2, data3, img, userName, userId);
-    console.log(data.userId)
-    
+    console.log(data.userId);
+
     const body = JSON.stringify(data);
-    console.log(body)
+    console.log(body);
     try {
       res = await fetch(url, {
         method: "POST",
@@ -80,7 +79,7 @@ export const MMovieForm = (props: MForm) => {
     <div className="globalCreate">
       <div className="createTopic">
         <MForm<Inputs>
-          title="Crée ton Topic"
+          title="Create post"
           className="moviePost"
           defaultValues={defaultValues}
           onSubmit={onSubmit}
@@ -96,7 +95,7 @@ export const MMovieForm = (props: MForm) => {
           ></MInput>
 
           <label className="sujet">
-            Sujet
+            Subject
             <textarea className="textArea" {...register("subject", {})} />
           </label>
 

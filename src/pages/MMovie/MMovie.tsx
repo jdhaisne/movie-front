@@ -49,16 +49,15 @@ const MMovie = () => {
       .then((response) => response.json())
       .then((data) => {
         setMovieResult(data);
-        const copyPoster = []
-        const name:string = localStorage.getItem('firstName')
-        const userId:string = localStorage.getItem('id')
-        copyPoster.push(name)
-        copyPoster.push(data.Poster)
-        copyPoster.push(userId)
-        console.log(data.Poster, "test22")
-        setImgAndName(copyPoster)
-        console.log(imgAndName[2])
-    
+        const copyPoster = [];
+        const name: string = localStorage.getItem("firstName");
+        const userId: string = localStorage.getItem("id");
+        copyPoster.push(name);
+        copyPoster.push(data.Poster);
+        copyPoster.push(userId);
+        console.log(data.Poster, "test22");
+        setImgAndName(copyPoster);
+        console.log(imgAndName[2]);
       })
       .catch((error) => {
         console.error("omdbapi", error);
@@ -87,7 +86,7 @@ const MMovie = () => {
     getInfosMovie();
   }, []);
 
-  console.log(imgAndName)
+  console.log(imgAndName);
   const api = `http://localhost:3000/topic/${id}`;
   return (
     <div>
@@ -108,15 +107,14 @@ const MMovie = () => {
                   </div>
                 </div>
                 <div className="div-post">
-                  <MMovieForm fetchData={fetchData}></MMovieForm>
+                  <MMovieForm fetchData={fetchData} imgAndName={imgAndName}></MMovieForm>
                 </div>
                 <div className="div-right">
                   <div className="infos-movie">
                     <h2 className="SingleMovie-title">{movieResult.Title}</h2>
 
-
                     <p className="singleMovie-director">
-                      Réalisé par {movieResult.Director}
+                      made by {movieResult.Director}
                     </p>
                     <div className="div-nav">
                       <nav>
@@ -145,7 +143,7 @@ const MMovie = () => {
                               activeClassName="active"
                               state={{ from: movieResult.Plot }}
                             >
-                              Autres infos
+                              Other infos
                             </NavLink>
                           </li>
                           <li>
@@ -163,14 +161,13 @@ const MMovie = () => {
                         <Outlet />
                       </div>
                     </div>
-
                   </div>
                   <RatingSystem />
                 </div>
               </div>
             </nav>
-            <MTopic ourData={ourData}></MTopic>
 
+            <MTopic ourData={ourData}></MTopic>
           </div>
         </>
       ) : (

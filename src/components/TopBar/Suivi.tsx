@@ -54,7 +54,12 @@ const Suivi = () => {
       {tableOfLike.length > 0 ? (
         tableOfLike.map((elem, index) => (
           <Link to={`/movie/${elem.imdbID}`}>
-            <img key={index} src={elem.Poster} alt={`Image ${index + 1}`} />
+            <img
+              className="movie-img"
+              key={index}
+              src={elem.Poster}
+              alt={`Image ${index + 1}`}
+            />
           </Link>
         ))
       ) : (
