@@ -80,18 +80,10 @@ export const MLoginForm = () => {
         style={{ maxWidth: "30%", width: "100%" }}
         ref={formRef}
       >
-        <Form.Item
-          label="mail"
-          className="div-first"
-          // name="password"
-        >
+        <Form.Item label="mail" className="div-first" name="mail">
           <Input />
         </Form.Item>
-        <Form.Item
-          label="password"
-          className="div-first"
-          // name="password"
-        >
+        <Form.Item label="password" className="div-first" name="password">
           <Input.Password />
         </Form.Item>
         <Form.Item></Form.Item>
