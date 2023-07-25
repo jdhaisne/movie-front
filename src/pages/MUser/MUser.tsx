@@ -26,50 +26,24 @@ export const MUser = () => {
 
   console.log("mu", userData);
   return (
-    // <div className="user__wrapper">
-    //   {userData && (
-    //     <>
-    //       <h2>
-    //         {userData.firstName} {userData.lastName}
-    //       </h2>
-    //       <div className="user__info">
-    //         <table>
-    //           <tbody>
-    //             <tr>
-    //               <td>firstname:</td>
-    //               <td>{userData.firstName}</td>
-    //             </tr>
-    //             <tr>
-    //               <td>lastname:</td>
-    //               <td>{userData.lastName}</td>
-    //             </tr>
-    //             <tr>
-    //               <td>mail:</td>
-    //               <td>{userData.mail}</td>
-    //             </tr>
-    //             {/* <tr>
-    //               <td>birthday:</td>
-    //               <td>{userData.birthday}</td>
-    //             </tr> */}
-    //           </tbody>
-    //         </table>
-    //       </div>
-    //     </>
-    //   )}
-    // </div>
-    <div className="user">
-      <Descriptions
-        title={`${userData.firstName} ${userData.lastName}`}
-        bordered
-      >
-        <Descriptions.Item label="firstname">
-          {userData.firstName}
-        </Descriptions.Item>
-        <Descriptions.Item label="lastname">
-          {userData.lastName}
-        </Descriptions.Item>
-        <Descriptions.Item label="mail">{userData.mail}</Descriptions.Item>
-      </Descriptions>
+    <div className="global">
+      <div className="global2">
+        <p className="title">User Infos</p>
+        <div className="userInfo">
+          <div className="userFirstName">
+            <p className="firstNameM">First name :&nbsp; </p>
+            <p className="firstName">{userData.firstName}</p>
+          </div>
+          <div className="userLastName">
+            <p className="lastNameM">Last name :&nbsp; </p>
+            <p className="lastName">{userData.lastName}</p>
+          </div>
+          <div className="userMail">
+            <p className="mailNameM">Mail :&nbsp; </p>
+            <p className="mailName">{userData.mail}</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
