@@ -43,12 +43,12 @@ export const MOtherUser = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to={`/user/${id}/avis`} activeClassName="active">
+                <NavLink to={`/user/${id}/CritiquesC`} activeClassName="active">
                   Reviews
                 </NavLink>
               </li>
               <li>
-                <NavLink to={`/user/${id}/critiquesC`} activeClassName="active">
+                <NavLink to={`/user/${id}/Avis`} activeClassName="active">
                   Opinion
                 </NavLink>
               </li>
