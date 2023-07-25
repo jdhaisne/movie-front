@@ -8,10 +8,9 @@ import { MLikeButton } from "../../components/MLikeButton/MLikeButton";
 
 import { MDeleteLikeButton } from "../../components/MDeleteLike/MDeleteLike";
 
-
 interface Ratings {
-  source: string;
-  value: string;
+  Source: string;
+  Value: string;
 }
 export interface DataApi {
   title: string;
@@ -21,21 +20,21 @@ export interface DataApi {
 }
 
 interface MovieInfo {
-  actors: string;
-  boxOffice: string;
-  country: string;
+  Actors: string;
+  BoxOffice: string;
+  Country: string;
   Director: string;
-  genre: string;
-  language: string;
-  plot: string;
+  Genre: string;
+  Language: string;
+  Plot: string;
   Poster: string;
-  rated: string;
-  ratings: Ratings[];
-  released: string;
-  runtime: string;
+  Rated: string;
+  Ratings: Ratings[];
+  Released: string;
+  Runtime: string;
   Title: string;
-  type: string;
-  year: string;
+  Type: string;
+  Year: string;
   imdbID: string;
 }
 
@@ -43,12 +42,23 @@ const MMovie = () => {
   const { id } = useParams();
   const apiKey = "e8d2b17f";
   const [movieResult, setMovieResult] = useState<MovieInfo | null>(null);
+  const [imgAndName, setImgAndName] = useState<string[]>([]);
 
   const getInfosMovie = () => {
     fetch(`https://www.omdbapi.com/?i=${id}&apikey=${apiKey}`)
       .then((response) => response.json())
       .then((data) => {
         setMovieResult(data);
+        const copyPoster = []
+        const name:string = localStorage.getItem('firstName')
+        const userId:string = localStorage.getItem('id')
+        copyPoster.push(name)
+        copyPoster.push(data.Poster)
+        copyPoster.push(userId)
+        console.log(data.Poster, "test22")
+        setImgAndName(copyPoster)
+        console.log(imgAndName[2])
+    
       })
       .catch((error) => {
         console.error("omdbapi", error);
@@ -61,7 +71,7 @@ const MMovie = () => {
       console.log("acant ");
       const response = await fetch(api);
       const data = await response.json();
-      console.log("apre");
+      console.log(data, "aa");
       setOurData(data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -76,6 +86,8 @@ const MMovie = () => {
   useEffect(() => {
     getInfosMovie();
   }, []);
+
+  console.log(imgAndName)
   const api = `http://localhost:3000/topic/${id}`;
   return (
     <div>
@@ -98,80 +110,57 @@ const MMovie = () => {
                 <p className="singleMovie-director">
                   Réalisé par {movieResult.Director}
                 </p>
+                <div className="div-nav">
+                  <nav>
+                    <ul>
+                      <li>
+                        <NavLink
+                          to={`/movie/${id}/notes`}
+                          activeClassName="active"
+                          state={{ from: movieResult.Actors }}
+                        >
+                          Casting
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to={`/movie/${id}/critiques`}
+                          activeClassName="active"
+                          state={{ from: movieResult.Ratings }}
+                        >
+                          Critiques presse
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to={`/movie/${id}/comments`}
+                          activeClassName="active"
+                          state={{ from: movieResult.Plot }}
+                        >
+                          Autres infos
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to={`/movie/${id}/plot`}
+                          activeClassName="active"
+                          state={{ from: movieResult.Plot }}
+                        >
+                          Synopsis
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </nav>
+                  <div className="div-nav-content">
+                    <Outlet />
+                  </div>
+                </div>
               </div>
               <RatingSystem />
             </nav>
-            {/* <div className="div-nav">
-                <nav>
-                  <ul>
-                    <li>
-                      <NavLink
-                        to={`/movie/${id}/notes`}
-                        activeClassName="active"
-                      >
-                        Notes
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink
-                        to={`/movie/${id}/critiques`}
-                        activeClassName="active"
-                      >
-                        Critiques
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink
-                        to={`/movie/${id}/comments`}
-                        activeClassName="active"
-                      >
-                        Commentaires
-                      </NavLink>
-                    </li>
-                  </ul>
-                </nav>
-                <div className="div-nav-content">
-                  <Outlet />
-                </div>
-              </div> */}
-
-            {/* <div className="SingleMovie-container">
-              <div className="SingleMovie">
-                <div className="SingleMovie-main">
-            
-                  <p className="SingleMovie-year">
-                    Sortie : {movieResult.Released}
-                  </p>
-                </div>
-
-                <div className="SingleMovie-infos">
-                  <p className="SingleMovie-plot">{movieResult.Plot}</p>
-                  <p className="SingleMovie-genre">
-                    Genre: {movieResult.Genre}
-                  </p>
-                  <p className="SingleMovie-runtime">
-                    Durée: {movieResult.Runtime}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <MLikeButton movieId={id}></MLikeButton>
-            </div>
-              <div className="SingleMovie-ratings">
-                {movieResult.Ratings.map((elem, index) => {
-                  return (
-                    <div key={index}>
-                      <p>Note: {elem.Value}</p>
-                      <p>Source: {elem.Source}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div> */}
             <div className="div-post">
-              <MMovieForm fetchData={fetchData}></MMovieForm>
               <MTopic ourData={ourData}></MTopic>
+              <MMovieForm  fetchData={fetchData} imgAndName ={imgAndName} ></MMovieForm>
             </div>
           </div>
         </>

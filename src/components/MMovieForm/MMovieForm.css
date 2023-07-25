@@ -19,8 +19,9 @@
     align-items: center;
 }
 
-.moviePost__text{
+#moviePost__text{
     margin-top: 5px;
+    border-radius: 20px;
 }
 
 .sujet{
@@ -42,5 +43,6 @@
 .buttonPost{
     margin-top: 20px;
     margin-bottom: 10px;
-    background-color: bisque;
+    background-color: rgb(50, 30, 109);
+    color: rgb(232, 228, 228);
 }

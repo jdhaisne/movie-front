@@ -8,6 +8,10 @@
   object-fit: cover;
 }
 
+.infos-movie {
+  width: 60%;
+}
+
 .div-image-movie {
   display: flex;
   flex-direction: column;
@@ -18,17 +22,53 @@
 }
 
 .div-nav {
-  width: 40%;
-  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 10px;
 }
 
+.div-nav nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.div-nav nav ul li {
+  margin-right: 20px;
+}
+
+.div-nav nav ul li:last-child {
+  margin-right: 0;
+}
+
+.div-nav nav ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.div-nav nav ul li a.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.div-nav-content {
+  margin-top: 20px;
+}
+
+/* 
 .div-nav nav ul {
   display: flex;
   justify-content: space-between;
 }
 nav ul {
   list-style-type: none;
-}
+} */
 
 .lds-spinner,
 .lds-spinner div,
