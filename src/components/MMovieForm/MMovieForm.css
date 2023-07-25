@@ -1,46 +1,65 @@
-.createTopic{
-    border: 1px solid black;
-    width: 60%;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
+.createTopic {
+  border: 1px solid black;
+  width: 60%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.globalCreate{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.globalCreate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.moviePost{
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Adjust the width of the input field
+.moviePost__text {
+  width: 100%;
 }
 
-.moviePost__text{
-    margin-top: 5px;
+/* Adjust the width of the textarea */
+/* .textArea {
+  width: 100%;
+} */
+
+/* .div-left {
+  /* Add the desired amount of right padding */
+/* padding-right: 20px; /* Adjust this value as needed */
+
+.moviePost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.sujet{
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-}
-.textArea{
-    margin-bottom: 5px;
-    height: 100px;
+
+.moviePost__text {
+  margin-top: 5px;
+
 }
 
-.type{
-    margin-top: 20px;
-    margin-bottom: 5px;
+.sujet {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.textArea {
+  margin-bottom: 5px;
+  height: 100px;
 }
 
-.buttonPost{
-    margin-top: 20px;
-    margin-bottom: 10px;
-    background-color: bisque;
+.type {
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
+
+.buttonPost {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  background-color: bisque;
+   color: rgb(232, 228, 228);
+}
+
+
+
