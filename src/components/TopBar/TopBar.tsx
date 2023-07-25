@@ -128,7 +128,7 @@ const TopBar = () => {
           </Menu.Item>
 
           <Menu.Item>
-            {localId && <Link to={`/user/account/${localId}`}>compte</Link>}
+            {localId && <Link to={`/user/account`}>compte</Link>}
             {!localId && <Link to="/register">register</Link>}
           </Menu.Item>
           {localId && (
