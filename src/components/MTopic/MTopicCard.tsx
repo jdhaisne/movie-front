@@ -25,7 +25,7 @@ export const MTopicCard = ({ topic, key }: { topic: TTopic; key: number }) => {
         </div>
         <div className="typeUserName">
           <p className="type">{topic.type}</p>
-          <Link to={`/user/${topic.userId}`}>
+          <Link to={`/user/${topic.userId}/suivi`}>
             <p className="userName">by {topic.userName}</p>
             </Link>
         </div>
