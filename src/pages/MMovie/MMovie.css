@@ -78,6 +78,14 @@
   overflow-y: auto; /* Active le défilement vertical pour le contenu */
 }
 
+.barre-de-recherche{
+  border-radius: 10px;
+  width: 30%;
+  min-height: 35px;
+  margin-right: 20px;
+  border-style: inherit;
+}
+
 
 .div-nav nav ul {
   list-style: none;
