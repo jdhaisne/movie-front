@@ -64,6 +64,11 @@ export const MOtherUser = () => {
                   Comments
                 </NavLink>
               </li>
+              <li>
+                <NavLink to={`/user/${id}/contact`} activeClassName="active">
+                  contact
+                </NavLink>
+              </li>
             </ul>
           </nav>
         </div>

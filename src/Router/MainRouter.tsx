@@ -122,6 +122,7 @@ export default function MainRouter() {
           <Route path="/user/:id/suivi" element={<Suivi />} />
           <Route path="/user/:id/avis" element={<Avis />} />
           <Route path="/user/:id/critiquesC" element={<CritiquesC />} />
+          <Route path="/user/:id/contact" element={<ContactForm />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
