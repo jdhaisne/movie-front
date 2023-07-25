@@ -14,7 +14,7 @@ import Plot from "../pages/MMovie/NavMovie/Plot";
 import MMovies from "../pages/MMovies/MMovies";
 import { MRegister } from "../pages/MRegister/MRegister";
 import { MHeader } from "../components/MHeader/MHeader";
-import { post } from "../pages/MPost/post";
+// import { post } from "../pages/MPost/post";
 import { MLogin } from "../pages/Login/MLogin";
 import { MFeed } from "../pages/MFeed/MFeed";
 
@@ -109,7 +109,15 @@ export default function MainRouter() {
           }
         />
 
-        {/* <Route path="/user/:id/contact" element={<ContactForm />} /> */}
+        <Route
+          path="/user/account"
+          element={
+            <>
+              <TopBar></TopBar>
+              <MUser />
+            </>
+          }
+        />
         <Route
           path="/user/:id"
           element={
@@ -122,6 +130,7 @@ export default function MainRouter() {
           <Route path="/user/:id/suivi" element={<Suivi />} />
           <Route path="/user/:id/avis" element={<Avis />} />
           <Route path="/user/:id/critiquesC" element={<CritiquesC />} />
+          <Route path="/user/:id/contact" element={<ContactForm />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />

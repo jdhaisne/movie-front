@@ -34,18 +34,6 @@ export const MOtherUser = () => {
     <>
       {" "}
       <div className="user">
-        <Descriptions
-          title={`${userData.firstName} ${userData.lastName}`}
-          bordered
-        >
-          <Descriptions.Item label="firstname">
-            {userData.firstName}
-          </Descriptions.Item>
-          <Descriptions.Item label="lastname">
-            {userData.lastName}
-          </Descriptions.Item>
-          <Descriptions.Item label="mail">{userData.mail}</Descriptions.Item>
-        </Descriptions>
         <div className="div-nav">
           <nav>
             <ul>
@@ -62,6 +50,11 @@ export const MOtherUser = () => {
               <li>
                 <NavLink to={`/user/${id}/critiquesC`} activeClassName="active">
                   Comments
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={`/user/${id}/contact`} activeClassName="active">
+                  contact
                 </NavLink>
               </li>
             </ul>

@@ -79,6 +79,7 @@ const MHome: React.FC = () => {
   return (
     <>
       <input
+        className="barre-de-recherche"
         type="text"
         value={searchTerm}
         onChange={handleInputChange}
