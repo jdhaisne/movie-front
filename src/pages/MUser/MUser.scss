@@ -1,5 +1,63 @@
 .user {
     display: flex;
     flex-direction: column;
+
+}
+
+.userInfo{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width : 90%;
+    height: 250px;
+    border-radius: 20px;
+    background-color: rgb(168, 177, 208);   
+    box-shadow: 6px 7px 8px -3px rgba(0, 0, 0, 0.472);
+    margin-top: 5px
+
+}
+
+.global{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.userFirstName, .userLastName, .userMail{
+    background-color:  #FFF;
+    display: flex;
+    justify-content: space-between;   
+    margin-left: 10px; 
+    margin-right: 10px; 
+    margin-top: 30px;
+    border:1px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 40px;
     align-items: center;
+    border-radius: 10px;
+    box-shadow: 6px 7px 8px -3px rgba(0, 0, 0, 0.472);
+    font-weight: 400;
+
+}
+
+.global2{
+    width: 40%;
+    height: 400px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    display: flex;
+    // justify-content: center;
+    background-color: #182F77;
+    border-radius: 20px;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 6px 7px 8px -3px rgba(0, 0, 0, 0.472);
+
+}
+
+.title{
+    color: white;
+    font-size: x-large;
 }
