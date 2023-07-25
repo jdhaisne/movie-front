@@ -21,7 +21,7 @@ const Critiques = () => {
     <div className="topicGlobal">
       <div className="topic">
         {topics.map((elem, index) => {
-          if (elem.type === "Commentaire")
+          if (elem.type === "Critique")
             return (
               <div className="oneTopicCom" key={index}>
                 <p className="type">{elem.type}</p>
