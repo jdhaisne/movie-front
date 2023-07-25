@@ -1,6 +1,6 @@
 import { TTopic } from "../../type";
 import { MComments } from "../MComments/MComments";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const MTopicCard = ({ topic, key }: { topic: TTopic; key: number }) => {
   console.log(topic.img);
@@ -10,9 +10,9 @@ export const MTopicCard = ({ topic, key }: { topic: TTopic; key: number }) => {
       key={key}
     >
       <div className="imgType">
-      <Link to={`/movie/${topic.movieId}`}>
-        <img src={topic.img} className="imageTopic"></img>
-    </Link>
+        <Link to={`/movie/${topic.movieId}`}>
+          <img src={topic.img} className="imageTopic"></img>
+        </Link>
         <div
           className={
             topic.type === "Avis"
@@ -24,10 +24,11 @@ export const MTopicCard = ({ topic, key }: { topic: TTopic; key: number }) => {
           <p className="messagePost">{topic.subject}</p>
         </div>
         <div className="typeUserName">
-          <p className="type">{topic.type}</p>
+          {topic.type == "Avis" && <p className="type">Opinion</p>}
+          {topic.type == "Critique" && <p className="type">Review</p>}
           <Link to={`/user/${topic.userId}`}>
             <p className="userName">by {topic.userName}</p>
-            </Link>
+          </Link>
         </div>
       </div>
 
