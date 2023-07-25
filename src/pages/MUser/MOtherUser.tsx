@@ -34,18 +34,6 @@ export const MOtherUser = () => {
     <>
       {" "}
       <div className="user">
-        <Descriptions
-          title={`${userData.firstName} ${userData.lastName}`}
-          bordered
-        >
-          <Descriptions.Item label="firstname">
-            {userData.firstName}
-          </Descriptions.Item>
-          <Descriptions.Item label="lastname">
-            {userData.lastName}
-          </Descriptions.Item>
-          <Descriptions.Item label="mail">{userData.mail}</Descriptions.Item>
-        </Descriptions>
         <div className="div-nav">
           <nav>
             <ul>
