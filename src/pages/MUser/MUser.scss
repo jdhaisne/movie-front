@@ -1,6 +1,7 @@
 .user {
     display: flex;
     flex-direction: column;
+    align-items: center;
 
 }
 
@@ -18,7 +19,6 @@
 }
 
 .global{
-    margin-top: 100px;
     display: flex;
     justify-content: center;
     width: 100%;
