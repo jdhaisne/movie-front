@@ -95,73 +95,83 @@ const MMovie = () => {
         <>
           <div className="main-content">
             <nav className="nav-movie">
-              <div className="div-image-movie">
-                <img
-                  src={movieResult.Poster}
-                  alt={movieResult.Poster}
-                  className="SingleMovie-image"
-                />
-                <MLikeButton movieId={movieResult.imdbID} />
-                <MDeleteLikeButton movieId={movieResult.imdbID} />
-              </div>
-              <div className="infos-movie">
-                <h2 className="SingleMovie-title">{movieResult.Title}</h2>
-
-                <p className="singleMovie-director">
-                  Made by{movieResult.Director}
-                </p>
-                <div className="div-nav">
-                  <nav>
-                    <ul>
-                      <li>
-                        <NavLink
-                          to={`/movie/${id}/notes`}
-                          activeClassName="active"
-                          state={{ from: movieResult.Actors }}
-                        >
-                          Casting
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          to={`/movie/${id}/critiques`}
-                          activeClassName="active"
-                          state={{ from: movieResult.Ratings }}
-                        >
-                          Press review
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          to={`/movie/${id}/comments`}
-                          activeClassName="active"
-                          state={{ from: movieResult.Plot }}
-                        >
-                          Other infos
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          to={`/movie/${id}/plot`}
-                          activeClassName="active"
-                          state={{ from: movieResult.Plot }}
-                        >
-                          Synopsis
-                        </NavLink>
-                      </li>
-                    </ul>
-                  </nav>
-                  <div className="div-nav-content">
-                    <Outlet />
+              <div className="div-movieHeader">
+                <div className="div-image-movie">
+                  <img
+                    src={movieResult.Poster}
+                    alt={movieResult.Poster}
+                    className="SingleMovie-image"
+                  />
+                  <div className="div-like">
+                    <MLikeButton movieId={movieResult.imdbID} />
+                    <MDeleteLikeButton movieId={movieResult.imdbID} />
                   </div>
                 </div>
+                <div className="div-post">
+                  <MMovieForm fetchData={fetchData}></MMovieForm>
+                </div>
+                <div className="div-left">
+                  <div className="infos-movie">
+                    <h2 className="SingleMovie-title">{movieResult.Title}</h2>
+
+
+                    <p className="singleMovie-director">
+                      Réalisé par {movieResult.Director}
+                    </p>
+                    <div className="div-nav">
+                      <nav>
+                        <ul>
+                          <li>
+                            <NavLink
+                              to={`/movie/${id}/notes`}
+                              activeClassName="active"
+                              state={{ from: movieResult.Actors }}
+                            >
+                              Casting
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to={`/movie/${id}/critiques`}
+                              activeClassName="active"
+                              state={{ from: movieResult.Ratings }}
+                            >
+                              Critiques presse
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to={`/movie/${id}/comments`}
+                              activeClassName="active"
+                              state={{ from: movieResult.Plot }}
+                            >
+                              Autres infos
+                            </NavLink>
+                          </li>
+                          <li>
+                            <NavLink
+                              to={`/movie/${id}/plot`}
+                              activeClassName="active"
+                              state={{ from: movieResult.Plot }}
+                            >
+                              Synopsis
+                            </NavLink>
+                          </li>
+                        </ul>
+                      </nav>
+                      <div className="div-nav-content" style={{ width: "80%" }}>
+                        <Outlet />
+                      </div>
+                    </div>
+
+                  </div>
+                  <RatingSystem />
+                </div>
               </div>
-              <RatingSystem />
             </nav>
-            <div className="div-post">
-              <MTopic ourData={ourData}></MTopic>
-              <MMovieForm  fetchData={fetchData} imgAndName ={imgAndName} ></MMovieForm>
-            </div>
+            <MMovieForm fetchData={fetchData}></MMovieForm>
+            <MTopic ourData={ourData}></MTopic>
+
           </div>
         </>
       ) : (

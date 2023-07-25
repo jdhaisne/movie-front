@@ -1,4 +1,5 @@
 import { MButton } from "../MButton/MButton";
+import "./MDeleteLike.css";
 
 export const MDeleteLikeButton = ({ movieId }: { movieId: string }) => {
   const onClick = async () => {
@@ -20,5 +21,11 @@ export const MDeleteLikeButton = ({ movieId }: { movieId: string }) => {
       });
     } catch (err) {}
   };
-  return <MButton onClick={onClick}>unsubscribe</MButton>;
+
+  return (
+    <MButton className="redButton" onClick={onClick}>
+      Unfollow
+    </MButton>
+  );
+
 };
