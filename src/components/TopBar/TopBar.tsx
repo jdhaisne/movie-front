@@ -113,7 +113,7 @@ const TopBar = () => {
               to={`/user/${userData.id}/avis`}
               state={{ from: opinionsTable }}
             >
-              comment
+              Opinion
             </Link>
             {/* <Link to={`/user/${id}/avis`}> Avis</Link> */}
           </Menu.Item>
