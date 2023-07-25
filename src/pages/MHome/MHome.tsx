@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./MHome.css";
-import { MFeed } from "../MFeed/MFeed";
 
 interface SearchResult {
   Title: string;
@@ -56,12 +55,12 @@ const MHome: React.FC = () => {
         .flat()
         .filter((item) => item !== null && item !== undefined);
 
-      const mergedResults = [...allResults, ...localData];
+      const mergedResults = [...allResults, ...[localData]];
       const filterMerge = mergedResults.filter(
         (item) => item !== null && item !== undefined
       );
       setSearchResults(filterMerge);
-      console.log(filterMerge);
+      console.log(mergedResults);
 
       if (filterMerge.length > 0)
         navigate("/movies", { state: { searchResults: filterMerge } }); // Pass searchResults to the /movies route
@@ -77,7 +76,7 @@ const MHome: React.FC = () => {
   }, [searchResults]);
 
   return (
-    <div>
+    <>
       <input
         type="text"
         value={searchTerm}
@@ -87,8 +86,7 @@ const MHome: React.FC = () => {
       <button onClick={handleSearch} disabled={loading}>
         {loading ? "Chargement..." : "Rechercher"}
       </button>
-      <MFeed></MFeed>
-    </div>
+    </>
   );
 };
 

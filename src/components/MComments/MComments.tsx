@@ -91,17 +91,20 @@ export const MComments = ({
             name="message"
           ></MInput>
 
-          <MButton className="buttonPost">Envoi ton com</MButton>
+          <MButton className="buttonPost">send</MButton>
         </MForm>
         <div className={className}>
-          {data.map((elem: dataCommentaire) => {
+          {data.length > 0 ? (
+          data.map((elem: dataCommentaire) => {
             return (
               <div className="oneComment">
                 <span className="userName">{elem.userId}:</span>
                 <span> {elem.message}</span>
               </div>
             );
-          })}
+          })):(
+            <p>Aucun commentaire disponible</p>
+          )}
         </div>
       </>
     </div>

@@ -21,9 +21,11 @@ export const MDeleteLikeButton = ({ movieId }: { movieId: string }) => {
       });
     } catch (err) {}
   };
+
   return (
     <MButton className="redButton" onClick={onClick}>
       Unfollow
     </MButton>
   );
+
 };

@@ -42,12 +42,23 @@ const MMovie = () => {
   const { id } = useParams();
   const apiKey = "e8d2b17f";
   const [movieResult, setMovieResult] = useState<MovieInfo | null>(null);
+  const [imgAndName, setImgAndName] = useState<string[]>([]);
 
   const getInfosMovie = () => {
     fetch(`https://www.omdbapi.com/?i=${id}&apikey=${apiKey}`)
       .then((response) => response.json())
       .then((data) => {
         setMovieResult(data);
+        const copyPoster = []
+        const name:string = localStorage.getItem('firstName')
+        const userId:string = localStorage.getItem('id')
+        copyPoster.push(name)
+        copyPoster.push(data.Poster)
+        copyPoster.push(userId)
+        console.log(data.Poster, "test22")
+        setImgAndName(copyPoster)
+        console.log(imgAndName[2])
+    
       })
       .catch((error) => {
         console.error("omdbapi", error);
@@ -60,7 +71,7 @@ const MMovie = () => {
       console.log("acant ");
       const response = await fetch(api);
       const data = await response.json();
-      console.log("apre");
+      console.log(data, "aa");
       setOurData(data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -75,6 +86,8 @@ const MMovie = () => {
   useEffect(() => {
     getInfosMovie();
   }, []);
+
+  console.log(imgAndName)
   const api = `http://localhost:3000/topic/${id}`;
   return (
     <div>
@@ -100,6 +113,7 @@ const MMovie = () => {
                 <div className="div-left">
                   <div className="infos-movie">
                     <h2 className="SingleMovie-title">{movieResult.Title}</h2>
+
 
                     <p className="singleMovie-director">
                       Réalisé par {movieResult.Director}
@@ -149,6 +163,7 @@ const MMovie = () => {
                         <Outlet />
                       </div>
                     </div>
+
                   </div>
                   <RatingSystem />
                 </div>
@@ -156,6 +171,7 @@ const MMovie = () => {
             </nav>
             <MMovieForm fetchData={fetchData}></MMovieForm>
             <MTopic ourData={ourData}></MTopic>
+
           </div>
         </>
       ) : (

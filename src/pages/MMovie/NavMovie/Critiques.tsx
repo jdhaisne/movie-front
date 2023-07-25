@@ -12,7 +12,7 @@ const Critiques = () => {
         return (
           <div key={index}>
             <p>Source: {elem.Source}</p>
-            <p>Note: {elem.Value}</p>
+            <p>Rating: {elem.Value}</p>
           </div>
         );
       })}

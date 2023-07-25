@@ -116,7 +116,7 @@ const RatingSystem = () => {
 
   return (
     <div className="div-ratings">
-      <h3>Notez le film ! </h3>
+      <h3>Rate the movie</h3>
       <div className="container">
         {stars.map((_, index) => (
           <FaStar
@@ -132,7 +132,7 @@ const RatingSystem = () => {
           />
         ))}
       </div>
-      <h3>Notes Spectateurs : </h3>
+      <h3>viewer reviews : </h3>
       <div className="container">
         {starsMean.map((_, index) => (
           <FaStar

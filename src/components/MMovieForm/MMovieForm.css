@@ -32,8 +32,10 @@
   align-items: center;
 }
 
+
 .moviePost__text {
   margin-top: 5px;
+
 }
 
 .sujet {
@@ -56,4 +58,8 @@
   margin-top: 20px;
   margin-bottom: 10px;
   background-color: bisque;
+   color: rgb(232, 228, 228);
 }
+
+
+
