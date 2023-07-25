@@ -32,9 +32,14 @@
   align-items: center;
 }
 
+
 .moviePost__text {
   margin-top: 5px;
+<<<<<<< HEAD
   border-radius: 5px;
+=======
+
+>>>>>>> 455ea3b00506cacfe495d13a0b42c7d4e63f1906
 }
 
 .sujet {
@@ -58,4 +63,8 @@
   margin-top: 20px;
   margin-bottom: 10px;
   background-color: bisque;
+   color: rgb(232, 228, 228);
 }
+
+
+

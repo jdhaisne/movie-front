@@ -14,6 +14,9 @@ export type TTopic = {
     subject: string;
     movieId: string;
     type: string;
+    img : string;
+    userName: string;
+    userId:string;
 
 }
 

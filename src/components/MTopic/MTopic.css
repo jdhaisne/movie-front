@@ -21,7 +21,7 @@
 
 .titleMessagePostCom, .titleMessagePostCri{
     margin-top: 20px;
-    width: 50%;
+    width: 60%;
     border: 1px solid black;
     border-radius: 30px;
     display: flex;
@@ -79,4 +79,27 @@
 
 .commentsCri, .titleMessagePostCri{
     background-color: rgb(163, 142, 172);
+}
+
+.imageTopic {
+    margin-top: 10px;
+    width: 75px;
+    height: 107px;
+    border-radius: 10px;
+}
+
+.imgType{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.userName{
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.typeUserName{
+    display:flex;
+    flex-direction: column;
 }

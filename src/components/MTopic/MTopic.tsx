@@ -12,6 +12,7 @@ interface MTopicProps {
 export const MTopic = (props: MTopicProps) => {
   const { ourData } = props;
   console.log(ourData);
+  // console.log(ourData[0].image, 'testgenial')
   return (
     <div className="topicGlobal">
       <div className="topic">

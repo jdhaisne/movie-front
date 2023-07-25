@@ -173,7 +173,7 @@ export const MRegisterForm = () => {
             ]}
             {...passwordValidation}
           >
-            <Input />
+            <Input.Password />
           </Form.Item>
 
           <Form.Item
@@ -185,7 +185,7 @@ export const MRegisterForm = () => {
             ]}
             {...passwordValidation}
           >
-            <Input />
+            <Input.Password />
           </Form.Item>
 
           <Form.Item
@@ -214,7 +214,7 @@ export const MRegisterForm = () => {
 
           <Form.Item>
             <Button type="primary" htmlType="submit">
-              Envoyer
+              Register
             </Button>
           </Form.Item>
         </Form>
