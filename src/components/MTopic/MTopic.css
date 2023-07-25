@@ -17,6 +17,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 6px 7px 8px -3px rgba(0, 0, 0, 0.472);
 }
 
 .titleMessagePostCom, .titleMessagePostCri{
@@ -32,13 +33,14 @@
 
 
 .oneTopicCom{
-    background-color: rgb(71, 103, 208);
+    background-color: rgb(24, 47, 119);
     color : white;
    
 }
 
 .oneTopicCri{
-    background-color: rgb(135, 40, 172);
+    background-color: rgb(64, 9, 86);
+    /* background-color:rgb(29 57 58 / 63%); */
     color : white;
 }
 

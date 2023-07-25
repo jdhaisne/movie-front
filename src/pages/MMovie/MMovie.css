@@ -1,7 +1,6 @@
 .nav-movie {
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
 }
 
 .div-post {
@@ -47,14 +46,16 @@
 
 .div-like {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .div-like :nth-of-type(1) {
-  width: 50%;
+  width: 45%;
+  box-shadow: 6px 7px 8px -3px rgba(0, 0, 0, 0.472);
 }
 
 .div-like :nth-of-type(2) {
-  width: 50%;
+  width: 45%;
+  box-shadow: 6px 7px 8px -3px rgba(0, 0, 0, 0.472);
 }
 
 .div-nav {
@@ -65,6 +66,7 @@
   padding: 20px;
   width: 300px;
   border-radius: 20px;
+  box-shadow: 6px 7px 8px -3px rgba(0, 0, 0, 0.472);
 }
 
 .div-nav {
@@ -112,7 +114,6 @@
 .div-nav-content {
 
   margin-top: 5px;
-he
 
 }
 /* 

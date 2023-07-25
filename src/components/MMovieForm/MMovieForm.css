@@ -32,14 +32,10 @@
   align-items: center;
 }
 
-
 .moviePost__text {
   margin-top: 5px;
-<<<<<<< HEAD
   border-radius: 5px;
-=======
-
->>>>>>> 455ea3b00506cacfe495d13a0b42c7d4e63f1906
+  box-shadow: 6px 7px 8px -3px rgba(0, 0, 0, 0.472);
 }
 
 .sujet {
@@ -52,6 +48,7 @@
   margin-bottom: 5px;
   height: 100px;
   border-radius: 10px;
+  box-shadow: 6px 7px 8px -3px rgba(0, 0, 0, 0.472);
 }
 
 .type {
@@ -62,9 +59,7 @@
 .buttonPost {
   margin-top: 20px;
   margin-bottom: 10px;
-  background-color: bisque;
-   color: rgb(232, 228, 228);
+  background-color:#a1caf6;
+  color: black;
+  box-shadow: 6px 7px 8px -3px rgba(0, 0, 0, 0.472)
 }
-
-
-
