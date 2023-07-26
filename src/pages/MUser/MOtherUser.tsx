@@ -52,11 +52,11 @@ export const MOtherUser = () => {
                   Opinion
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink to={`/user/${id}/contact`} activeClassName="active">
                   contact
                 </NavLink>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </div>
